@@ -818,21 +818,61 @@ Thank you for your smile, your warmth, and the way you make ordinary days feel m
         setTimeout(() => {
           main.style.opacity = "1";
         }, 50);
-      }
+  <script>
+    // ... (baki ka upar wala code jaise initApp, renderGiftContent vagera yhi rahega) ...
+
+    // 1. Photo Upload & Compress Handler
+    function handlePhotoUpload(input, index) {
+      const file = input.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const img = new Image();
+        img.onload = function () {
+          const canvas = document.createElement("canvas");
+          const MAX_WIDTH = 360; 
+          const scale = MAX_WIDTH / img.width;
+          canvas.width = MAX_WIDTH;
+          canvas.height = img.height * scale;
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+          const compressedDataUrl = canvas.toDataURL("image/jpeg", 0.65);
+          giftData[`mem${index}Img`] = compressedDataUrl;
+          document.getElementById(`preview-mem${index}`).src = compressedDataUrl;
+          showToast(`Photo ${index} selected!`);
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
     }
 
-    // 4. Creator Edit Modal Controls
+    // MP3 Audio File Selector Listener
+    document.addEventListener("change", function (e) {
+      if (e.target && e.target.id === "input-music-file") {
+        const file = e.target.files[0];
+        if (!file) return;
+        const audioUrl = URL.createObjectURL(file);
+        const audio = document.getElementById("bg-music");
+        audio.src = audioUrl;
+        audio.play();
+        document.getElementById("music-icon").className = "fa-solid fa-pause";
+        document.getElementById("music-status").textContent = "Selected: " + file.name;
+      }
+    });
+
+    // openEditModal (Updated with photo previews)
     function openEditModal() {
       if (isViewOnly) return;
       document.getElementById("input-to").value = giftData.to;
       document.getElementById("input-from").value = giftData.from;
       document.getElementById("input-headline").value = giftData.headline;
       document.getElementById("input-letter").value = giftData.letter;
-      document.getElementById("input-mem1-img").value = giftData.mem1Img;
+      document.getElementById("preview-mem1").src = giftData.mem1Img;
       document.getElementById("input-mem1-cap").value = giftData.mem1Cap;
-      document.getElementById("input-mem2-img").value = giftData.mem2Img;
+      document.getElementById("preview-mem2").src = giftData.mem2Img;
       document.getElementById("input-mem2-cap").value = giftData.mem2Cap;
-      document.getElementById("input-mem3-img").value = giftData.mem3Img;
+      document.getElementById("preview-mem3").src = giftData.mem3Img;
       document.getElementById("input-mem3-cap").value = giftData.mem3Cap;
       document.getElementById("input-reason1").value = giftData.reason1;
       document.getElementById("input-reason2").value = giftData.reason2;
@@ -843,22 +883,17 @@ Thank you for your smile, your warmth, and the way you make ordinary days feel m
       document.getElementById("edit-modal").classList.remove("hidden");
     }
 
-    function closeEditModal() {
-      document.getElementById("edit-modal").classList.add("hidden");
-    }
-
+    // saveChanges (Updated)
     function saveChanges() {
       if (isViewOnly) return;
       giftData = {
+        ...giftData,
         to: document.getElementById("input-to").value.trim() || DEFAULT_DATA.to,
         from: document.getElementById("input-from").value.trim() || DEFAULT_DATA.from,
         headline: document.getElementById("input-headline").value.trim() || DEFAULT_DATA.headline,
         letter: document.getElementById("input-letter").value.trim() || DEFAULT_DATA.letter,
-        mem1Img: document.getElementById("input-mem1-img").value.trim() || DEFAULT_DATA.mem1Img,
         mem1Cap: document.getElementById("input-mem1-cap").value.trim() || DEFAULT_DATA.mem1Cap,
-        mem2Img: document.getElementById("input-mem2-img").value.trim() || DEFAULT_DATA.mem2Img,
         mem2Cap: document.getElementById("input-mem2-cap").value.trim() || DEFAULT_DATA.mem2Cap,
-        mem3Img: document.getElementById("input-mem3-img").value.trim() || DEFAULT_DATA.mem3Img,
         mem3Cap: document.getElementById("input-mem3-cap").value.trim() || DEFAULT_DATA.mem3Cap,
         reason1: document.getElementById("input-reason1").value.trim() || DEFAULT_DATA.reason1,
         reason2: document.getElementById("input-reason2").value.trim() || DEFAULT_DATA.reason2,
@@ -870,115 +905,12 @@ Thank you for your smile, your warmth, and the way you make ordinary days feel m
       localStorage.setItem("ilobher_creator_draft", JSON.stringify(giftData));
       renderGiftContent();
       closeEditModal();
-      showToast("Gift saved! Ab aap 'Copy Gift Link' kar sakte hain ✨");
+      showToast("Saved! अब 'Copy Gift Link' पर क्लिक करके लिंक कॉपी करें ✨");
     }
 
-    function resetToDefault() {
-      if (isViewOnly) return;
-      giftData = { ...DEFAULT_DATA };
-      localStorage.removeItem("ilobher_creator_draft");
-      renderGiftContent();
-      closeEditModal();
-      showToast("Default template restored!");
-    }
-
-    // 5. Generate & Copy Non-Editable View-Only Gift Link
-    function copyGiftLink() {
-      const jsonStr = JSON.stringify(giftData);
-      const encoded = btoa(unescape(encodeURIComponent(jsonStr)));
-      const baseUrl = window.location.origin + window.location.pathname;
-      const shareUrl = `${baseUrl}?view=1&data=${encodeURIComponent(encoded)}`;
-
-      navigator.clipboard.writeText(shareUrl).then(() => {
-        showToast("View-Only Gift Link Copied! Kholne wale ko edit option nahi dikhega ❤️");
-      }).catch(() => {
-        prompt("Copy your View-Only Gift Link below:", shareUrl);
-      });
-    }
-
-    // 6. Preview Recipient View (For Creator Testing)
-    function togglePreviewMode() {
-      if (isViewOnly) return;
-      isPreviewing = !isPreviewing;
-      const toolbar = document.getElementById("creator-toolbar");
-      const exitBar = document.getElementById("exit-preview-bar");
-      const inlineEdits = document.querySelectorAll(".inline-edit-btn");
-
-      if (isPreviewing) {
-        toolbar.classList.add("hidden");
-        exitBar.classList.remove("hidden");
-        inlineEdits.forEach(b => b.classList.add("hidden"));
-        showToast("Recipient Preview Mode ON (No edit buttons visible)");
-      } else {
-        toolbar.classList.remove("hidden");
-        exitBar.classList.add("hidden");
-        inlineEdits.forEach(b => b.classList.remove("hidden"));
-        showToast("Back to Creator Mode");
-      }
-    }
-
-    // 7. Playful Finale Yes/No Interaction
-    function dodgeNoButton(btn) {
-      const x = (Math.random() - 0.5) * 180;
-      const y = (Math.random() - 0.5) * 100;
-      btn.style.transform = `translate(${x}px, ${y}px)`;
-    }
-
-    function celebrateYes() {
-      const responseEl = document.getElementById("yes-response");
-      if (responseEl) {
-        responseEl.textContent = giftData.yesMsg;
-        responseEl.classList.remove("hidden");
-      }
-      // Burst extra hearts
-      for (let i = 0; i < 25; i++) {
-        spawnHeart(true);
-      }
-    }
-
-    // 8. Floating Petals & Hearts Background
-    function createFloatingHearts() {
-      setInterval(() => spawnHeart(false), 900);
-    }
-
-    function spawnHeart(burst) {
-      const container = document.getElementById("hearts-container");
-      if (!container) return;
-      const heart = document.createElement("div");
-      const icons = ["❤️", "💖", "🌸", "✨", "💕"];
-      heart.textContent = icons[Math.floor(Math.random() * icons.length)];
-      heart.style.position = "fixed";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.bottom = "-30px";
-      heart.style.fontSize = (burst ? 22 : 14 + Math.random() * 14) + "px";
-      heart.style.opacity = "0.75";
-      heart.style.pointerEvents = "none";
-      heart.style.zIndex = "5";
-       heart.style.transition = `transform ${burst ? 3 : 6 + Math.random() * 4}s linear, opacity 4s ease-out`;
-
-      container.appendChild(heart);
-
-      requestAnimationFrame(() => {
-        heart.style.transform = `translateY(-110vh) rotate(${Math.random() * 360}deg)`;
-        heart.style.opacity = "0";
-      });
-
-      setTimeout(() => heart.remove(), 10000);
-    }
-
-    function showToast(msg) {
-      const toast = document.getElementById("toast");
-      const toastMsg = document.getElementById("toast-msg");
-      if (!toast || !toastMsg) return;
-      toastMsg.textContent = msg;
-      toast.style.opacity = "1";
-      setTimeout(() => {
-        toast.style.opacity = "0";
-      }, 3500);
-    }
-
-    window.addEventListener("DOMContentLoaded", initApp);
+    // ... (baki ke neeche ke functions jaise copyGiftLink, showToast vagera yhi rahenge) ...
   </script>
+            
 </body>
 </html>
 
