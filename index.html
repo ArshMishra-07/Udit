@@ -421,5 +421,390 @@ Thank you for your smile, your warmth, and the way you make ordinary days feel m
       <p>Made with all my heart ❤️ <span id="footer-sender">Just For You</span></p>
     </footer>
   </main>
+  <!-- =========================================================
+       3. CREATOR FLOATING TOOLBAR (Hidden in View-Only Link)
+       ========================================================= -->
+  <div id="creator-toolbar" class="creator-only fixed bottom-4 left-1/2 -translate-x-1/2 z-40 w-[95%] max-w-2xl">
+    <div class="bg-[#2b141e]/95 backdrop-blur-md text-white px-4 py-3 rounded-2xl shadow-2xl border border-rose-400/30 flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="px-2.5 py-1 rounded-lg bg-rose-600 text-xs font-bold tracking-wider uppercase flex items-center gap-1">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> Creator Mode
+        </span>
+        <span class="text-xs text-rose-200 hidden sm:inline">Sirf aap edit kar sakte hain</span>
+      </div>
 
+      <div class="flex items-center gap-2 flex-wrap">
+        <button onclick="openEditModal()" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-medium transition flex items-center gap-1.5">
+          <i class="fa-solid fa-pen-to-square"></i> Edit Gift
+        </button>
+
+        <button onclick="togglePreviewMode()" id="preview-btn" class="px-3 py-1.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-200 border border-amber-400/30 text-xs font-medium transition flex items-center gap-1.5">
+          <i class="fa-solid fa-eye"></i> Preview Recipient View
+        </button>
+
+        <button onclick="copyGiftLink()" class="px-4 py-1.5 rounded-xl bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white text-xs font-bold shadow-lg shadow-rose-500/30 transition flex items-center gap-1.5">
+          <i class="fa-solid fa-link"></i> Copy Gift Link
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exit Preview Floating Pill (Only visible when Creator is testing Recipient View) -->
+  <div id="exit-preview-bar" class="hidden fixed bottom-4 right-4 z-50">
+    <button onclick="togglePreviewMode()" class="px-4 py-2.5 rounded-full bg-gray-900/90 text-white text-xs font-semibold shadow-xl border border-white/20 hover:bg-black transition flex items-center gap-2">
+      <i class="fa-solid fa-pen"></i> Back to Creator Mode
+    </button>
+  </div>
+
+  <!-- =========================================================
+       4. CREATOR EDIT MODAL (All Customization Controls)
+       ========================================================= -->
+  <div id="edit-modal" class="creator-only hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-hidden shadow-2xl flex flex-col border border-rose-100">
+      <!-- Modal Header -->
+      <div class="px-6 py-4 bg-gradient-to-r from-rose-50 to-pink-50 border-b border-rose-100 flex items-center justify-between">
+        <div>
+          <h3 class="font-serif text-xl font-bold text-gray-800">Customize Your Digital Gift ✨</h3>
+          <p class="text-xs text-gray-500">Saare changes auto-save hote hain aur link me encode ho jayenge</p>
+        </div>
+        <button onclick="closeEditModal()" class="w-8 h-8 rounded-full bg-white text-gray-500 hover:text-rose-600 flex items-center justify-center shadow-sm">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body (Scrollable Form) -->
+      <div class="p-6 overflow-y-auto space-y-6 text-sm">
+        <!-- Names & Title -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Recipient Name (Jiske liye gift hai)</label>
+            <input type="text" id="input-to" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 focus:border-rose-400 focus:outline-none" placeholder="e.g. My Love / Priya" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Your Name (Aapka naam)</label>
+            <input type="text" id="input-from" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 focus:border-rose-400 focus:outline-none" placeholder="e.g. Yours Forever / Rahul" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Hero Headline</label>
+          <input type="text" id="input-headline" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 focus:border-rose-400 focus:outline-none" placeholder="e.g. Every Love Story Is Beautiful, But Ours Is My Favorite" />
+        </div>
+
+        <!-- Love Letter -->
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Secret Love Letter</label>
+          <textarea id="input-letter" rows="4" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 focus:border-rose-400 focus:outline-none" placeholder="Apne dil ki baat yahan likhein..."></textarea>
+        </div>
+
+        <!-- Memories / Polaroids -->
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">3 Special Memories (Photo URL + Caption)</label>
+          <div class="space-y-3">
+            <div class="p-3 rounded-2xl bg-rose-50/50 border border-rose-100 grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <input type="text" id="input-mem1-img" class="px-3 py-1.5 rounded-lg border border-gray-200 text-xs" placeholder="Photo 1 Image URL" />
+              <input type="text" id="input-mem1-cap" class="px-3 py-1.5 rounded-lg border border-gray-200 text-xs" placeholder="Caption 1 (e.g. Our First Date)" />
+            </div>
+            <div class="p-3 rounded-2xl bg-rose-50/50 border border-rose-100 grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <input type="text" id="input-mem2-img" class="px-3 py-1.5 rounded-lg border border-gray-200 text-xs" placeholder="Photo 2 Image URL" />
+              <input type="text" id="input-mem2-cap" class="px-3 py-1.5 rounded-lg border border-gray-200 text-xs" placeholder="Caption 2 (e.g. Late Night Talks)" />
+            </div>
+            <div class="p-3 rounded-2xl bg-rose-50/50 border border-rose-100 grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <input type="text" id="input-mem3-img" class="px-3 py-1.5 rounded-lg border border-gray-200 text-xs" placeholder="Photo 3 Image URL" />
+              <input type="text" id="input-mem3-cap" class="px-3 py-1.5 rounded-lg border border-gray-200 text-xs" placeholder="Caption 3 (e.g. Forever & Always)" />
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Reasons Why I Love You (Flip Cards) -->
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">3 Reasons I Adore You (Flip Cards)</label>
+          <div class="space-y-2">
+            <input type="text" id="input-reason1" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 text-xs" placeholder="Reason 1..." />
+            <input type="text" id="input-reason2" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 text-xs" placeholder="Reason 2..." />
+            <input type="text" id="input-reason3" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 text-xs" placeholder="Reason 3..." />
+          </div>
+        </div>
+
+        <!-- Finale Question -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Finale Cute Question</label>
+            <input type="text" id="input-question" class="w-full px-3.5 py-2 rounded-xl border border-gray-200" placeholder="e.g. Will you stay mine forever?" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Celebration Reply Message</label>
+            <input type="text" id="input-yes-msg" class="w-full px-3.5 py-2 rounded-xl border border-gray-200" placeholder="e.g. Yay! You made me the happiest person alive! ❤️" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="px-6 py-4 bg-gray-50 border-t border-gray-100 flex items-center justify-between">
+        <button onclick="resetToDefault()" class="text-xs text-gray-400 hover:text-red-500 transition">
+          Reset Default
+        </button>
+        <div class="flex gap-2">
+          <button onclick="closeEditModal()" class="px-4 py-2 rounded-xl border border-gray-200 text-gray-600 text-xs font-semibold hover:bg-gray-100">
+            Cancel
+          </button>
+          <button onclick="saveChanges()" class="px-5 py-2 rounded-xl bg-rose-600 text-white text-xs font-bold hover:bg-rose-700 shadow-md">
+            Save & Apply Changes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 z-[60] bg-gray-900 text-white px-5 py-3 rounded-full text-xs font-medium shadow-2xl opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-2">
+    <i class="fa-solid fa-circle-check text-emerald-400"></i>
+    <span id="toast-msg">Link copied!</span>
+  </div>
+
+  <!-- =========================================================
+       5. JAVASCRIPT LOGIC (State, View-Only Security, Animations)
+       ========================================================= -->
+  <script>
+    // Default Romantic Template Data
+    const DEFAULT_DATA = {
+      to: "My Favorite Person",
+      from: "Yours Always",
+      headline: "Every Love Story Is Beautiful, But Ours Is My Favorite",
+      letter: "From the very first moment we talked, something shifted in my world. You turned ordinary days into my favorite memories and gave my heart a home it never knew it needed.\n\nNo matter where life takes us, you will always be my safest place, my biggest smile, and my greatest adventure. I love you more than words could ever hold.",
+      mem1Img: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=600&q=80",
+      mem1Cap: "The day everything began ✨",
+      mem2Img: "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=600&q=80",
+      mem2Cap: "Endless laughs & late talks 🌙",
+      mem3Img: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=600&q=80",
+      mem3Cap: "Forever isn't long enough ❤️",
+      reason1: "The way your eyes light up whenever you smile—it instantly fixes my worst days.",
+      reason2: "How safe, understood, and genuinely happy I feel every single time I'm with you.",
+      reason3: "Your kindness, your chaotic humor, and the effortless magic you bring into my life.",
+      question: "Will you be mine forever & always?",
+      yesMsg: "I knew it! You just made me the luckiest person in the universe! ❤️✨"
+    };
+
+    let giftData = { ...DEFAULT_DATA };
+    let isViewOnly = false;
+    let isPreviewing = false;
+
+    // 1. Check URL Parameters on Load (Strict View-Only Lock)
+    function initApp() {
+      const params = new URLSearchParams(window.location.search);
+      const viewFlag = params.get("view");
+      const encodedData = params.get("data");
+
+      if (encodedData) {
+        try {
+          // Decode Base64 UTF-8 payload safely
+          const jsonStr = decodeURIComponent(escape(atob(encodedData)));
+          const parsed = JSON.parse(jsonStr);
+          giftData = { ...DEFAULT_DATA, ...parsed };
+        } catch (e) {
+          console.error("Invalid gift link data:", e);
+        }
+      } else {
+        // Load Creator's local draft if not opening a shared link
+        const saved = localStorage.getItem("ilobher_creator_draft");
+        if (saved) {
+          try {
+            giftData = { ...DEFAULT_DATA, ...JSON.parse(saved) };
+          } catch (e) {}
+        }
+      }
+
+      // If ?view=1 is in URL, permanently lock out all Creator/Edit UI
+      if (viewFlag === "1") {
+        isViewOnly = true;
+        document.body.classList.add("view-only-mode");
+        document.querySelectorAll(".creator-only").forEach(el => el.remove());
+      }
+
+      renderGiftContent();
+      createFloatingHearts();
+    }
+
+    // 2. Render Data into DOM
+    function renderGiftContent() {
+      const setTxt = (id, val) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = val;
+      };
+      const setImg = (id, src) => {
+        const el = document.getElementById(id);
+        if (el) el.src = src;
+      };
+
+      setTxt("display-to", giftData.to);
+      setTxt("display-to-hero", giftData.to);
+      setTxt("display-from", giftData.from);
+      setTxt("display-headline", giftData.headline);
+      setTxt("display-letter", giftData.letter);
+
+      setImg("display-mem1-img", giftData.mem1Img);
+      setTxt("display-mem1-cap", giftData.mem1Cap);
+      setImg("display-mem2-img", giftData.mem2Img);
+      setTxt("display-mem2-cap", giftData.mem2Cap);
+      setImg("display-mem3-img", giftData.mem3Img);
+      setTxt("display-mem3-cap", giftData.mem3Cap);
+
+      setTxt("display-reason1", giftData.reason1);
+      setTxt("display-reason2", giftData.reason2);
+      setTxt("display-reason3", giftData.reason3);
+
+      setTxt("display-question", giftData.question);
+    }
+
+    // 3. Open Wax Seal Envelope
+    function openGiftEnvelope() {
+      const intro = document.getElementById("envelope-intro");
+      const main = document.getElementById("gift-main");
+      if (intro) {
+        intro.style.opacity = "0";
+        intro.style.pointerEvents = "none";
+        setTimeout(() => intro.classList.add("hidden"), 700);
+      }
+      if (main) {
+        main.classList.remove("hidden");
+        setTimeout(() => {
+          main.style.opacity = "1";
+        }, 50);
+      }
+    }
+
+    // 4. Creator Edit Modal Controls
+    function openEditModal() {
+      if (isViewOnly) return;
+      document.getElementById("input-to").value = giftData.to;
+      document.getElementById("input-from").value = giftData.from;
+      document.getElementById("input-headline").value = giftData.headline;
+      document.getElementById("input-letter").value = giftData.letter;
+      document.getElementById("input-mem1-img").value = giftData.mem1Img;
+      document.getElementById("input-mem1-cap").value = giftData.mem1Cap;
+      document.getElementById("input-mem2-img").value = giftData.mem2Img;
+      document.getElementById("input-mem2-cap").value = giftData.mem2Cap;
+      document.getElementById("input-mem3-img").value = giftData.mem3Img;
+      document.getElementById("input-mem3-cap").value = giftData.mem3Cap;
+      document.getElementById("input-reason1").value = giftData.reason1;
+      document.getElementById("input-reason2").value = giftData.reason2;
+      document.getElementById("input-reason3").value = giftData.reason3;
+      document.getElementById("input-question").value = giftData.question;
+      document.getElementById("input-yes-msg").value = giftData.yesMsg;
+
+      document.getElementById("edit-modal").classList.remove("hidden");
+    }
+
+    function closeEditModal() {
+      document.getElementById("edit-modal").classList.add("hidden");
+    }
+
+    function saveChanges() {
+      if (isViewOnly) return;
+      giftData = {
+        to: document.getElementById("input-to").value.trim() || DEFAULT_DATA.to,
+        from: document.getElementById("input-from").value.trim() || DEFAULT_DATA.from,
+        headline: document.getElementById("input-headline").value.trim() || DEFAULT_DATA.headline,
+        letter: document.getElementById("input-letter").value.trim() || DEFAULT_DATA.letter,
+        mem1Img: document.getElementById("input-mem1-img").value.trim() || DEFAULT_DATA.mem1Img,
+        mem1Cap: document.getElementById("input-mem1-cap").value.trim() || DEFAULT_DATA.mem1Cap,
+        mem2Img: document.getElementById("input-mem2-img").value.trim() || DEFAULT_DATA.mem2Img,
+        mem2Cap: document.getElementById("input-mem2-cap").value.trim() || DEFAULT_DATA.mem2Cap,
+        mem3Img: document.getElementById("input-mem3-img").value.trim() || DEFAULT_DATA.mem3Img,
+        mem3Cap: document.getElementById("input-mem3-cap").value.trim() || DEFAULT_DATA.mem3Cap,
+        reason1: document.getElementById("input-reason1").value.trim() || DEFAULT_DATA.reason1,
+        reason2: document.getElementById("input-reason2").value.trim() || DEFAULT_DATA.reason2,
+        reason3: document.getElementById("input-reason3").value.trim() || DEFAULT_DATA.reason3,
+        question: document.getElementById("input-question").value.trim() || DEFAULT_DATA.question,
+        yesMsg: document.getElementById("input-yes-msg").value.trim() || DEFAULT_DATA.yesMsg
+      };
+
+      localStorage.setItem("ilobher_creator_draft", JSON.stringify(giftData));
+      renderGiftContent();
+      closeEditModal();
+      showToast("Gift saved! Ab aap 'Copy Gift Link' kar sakte hain ✨");
+    }
+
+    function resetToDefault() {
+      if (isViewOnly) return;
+      giftData = { ...DEFAULT_DATA };
+      localStorage.removeItem("ilobher_creator_draft");
+      renderGiftContent();
+      closeEditModal();
+      showToast("Default template restored!");
+    }
+
+    // 5. Generate & Copy Non-Editable View-Only Gift Link
+    function copyGiftLink() {
+      const jsonStr = JSON.stringify(giftData);
+      const encoded = btoa(unescape(encodeURIComponent(jsonStr)));
+      const baseUrl = window.location.origin + window.location.pathname;
+      const shareUrl = `${baseUrl}?view=1&data=${encodeURIComponent(encoded)}`;
+
+      navigator.clipboard.writeText(shareUrl).then(() => {
+        showToast("View-Only Gift Link Copied! Kholne wale ko edit option nahi dikhega ❤️");
+      }).catch(() => {
+        prompt("Copy your View-Only Gift Link below:", shareUrl);
+      });
+    }
+
+    // 6. Preview Recipient View (For Creator Testing)
+    function togglePreviewMode() {
+      if (isViewOnly) return;
+      isPreviewing = !isPreviewing;
+      const toolbar = document.getElementById("creator-toolbar");
+      const exitBar = document.getElementById("exit-preview-bar");
+      const inlineEdits = document.querySelectorAll(".inline-edit-btn");
+
+      if (isPreviewing) {
+        toolbar.classList.add("hidden");
+        exitBar.classList.remove("hidden");
+        inlineEdits.forEach(b => b.classList.add("hidden"));
+        showToast("Recipient Preview Mode ON (No edit buttons visible)");
+      } else {
+        toolbar.classList.remove("hidden");
+        exitBar.classList.add("hidden");
+        inlineEdits.forEach(b => b.classList.remove("hidden"));
+        showToast("Back to Creator Mode");
+      }
+    }
+
+    // 7. Playful Finale Yes/No Interaction
+    function dodgeNoButton(btn) {
+      const x = (Math.random() - 0.5) * 180;
+      const y = (Math.random() - 0.5) * 100;
+      btn.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    function celebrateYes() {
+      const responseEl = document.getElementById("yes-response");
+      if (responseEl) {
+        responseEl.textContent = giftData.yesMsg;
+        responseEl.classList.remove("hidden");
+      }
+      // Burst extra hearts
+      for (let i = 0; i < 25; i++) {
+        spawnHeart(true);
+      }
+    }
+
+    // 8. Floating Petals & Hearts Background
+    function createFloatingHearts() {
+      setInterval(() => spawnHeart(false), 900);
+    }
+
+    function spawnHeart(burst) {
+      const container = document.getElementById("hearts-container");
+      if (!container) return;
+      const heart = document.createElement("div");
+      const icons = ["❤️", "💖", "🌸", "✨", "💕"];
+      heart.textContent = icons[Math.floor(Math.random() * icons.length)];
+      heart.style.position = "fixed";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.bottom = "-30px";
+      heart.style.fontSize = (burst ? 22 : 14 + Math.random() * 14) + "px";
+      heart.style.opacity = "0.75";
+      heart.style.pointerEvents = "none";
+      heart.style.zIndex = "5";
+ 
   
