@@ -1,0 +1,425 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Special Romantic Gift For You ❤️</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Romantic Script, Serif & Clean Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- LZ-String for lossless URL compression so share links stay clean and reliable -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            blush: '#fff0f5',
+            cream: '#fffaf0',
+            roseDeep: '#d6336c',
+            roseSoft: '#ff85a2',
+            goldAccent: '#d4af37',
+          },
+          fontFamily: {
+            script: ['"Great Vibes"', 'cursive'],
+            handwriting: ['"Dancing Script"', 'cursive'],
+            serif: ['"Playfair Display"', 'serif'],
+            sans: ['"Poppins"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom romantic animations & textures */
+    body {
+      background: linear-gradient(135deg, #fff0f5 0%, #fffaf0 50%, #ffe3ec 100%);
+      color: #4a2535;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* Glassmorphism Scrapbook Card */
+    .scrapbook-card {
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 15px 35px rgba(214, 51, 108, 0.08), 0 5px 15px rgba(0, 0, 0, 0.03);
+    }
+
+    /* Realistic Lined Paper for Love Letter */
+    .lined-paper {
+      background-color: #fffdf9;
+      background-image: linear-gradient(#f3d9e2 1px, transparent 1px);
+      background-size: 100% 2.1rem;
+      line-height: 2.1rem;
+      box-shadow: 0 10px 30px rgba(180, 120, 140, 0.15);
+      position: relative;
+    }
+    .lined-paper::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 2.2rem;
+      width: 1px;
+      background-color: rgba(214, 51, 108, 0.25);
+    }
+
+    /* Polaroid Frame Styling */
+    .polaroid {
+      background: #ffffff;
+      padding: 12px 12px 36px 12px;
+      box-shadow: 0 12px 25px rgba(74, 37, 53, 0.12);
+      transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.35s ease;
+    }
+    .polaroid:hover {
+      transform: scale(1.03) rotate(0deg) !important;
+      box-shadow: 0 20px 35px rgba(214, 51, 108, 0.18);
+      z-index: 10;
+    }
+
+    /* Washi Tape Effect */
+    .washi-tape {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-3deg);
+      width: 90px;
+      height: 24px;
+      background: rgba(255, 182, 193, 0.65);
+      border-left: 2px dashed rgba(255,255,255,0.6);
+      border-right: 2px dashed rgba(255,255,255,0.6);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      z-index: 5;
+    }
+
+    /* 3D Flip Card for Reasons Why I Love You */
+    .flip-card {
+      perspective: 1000px;
+      cursor: pointer;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+    }
+    .flip-card-back {
+      transform: rotateY(180deg);
+    }
+
+    /* Envelope Wax Seal Pulse */
+    @keyframes sealPulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(214, 51, 108, 0.5); }
+      50% { transform: scale(1.06); box-shadow: 0 0 0 14px rgba(214, 51, 108, 0); }
+    }
+    .wax-seal {
+      animation: sealPulse 2.2s infinite;
+      background: radial-gradient(circle at 30% 30%, #e64980, #a61e4d);
+      border: 3px solid #f8c291;
+    }
+
+    /* Floating Background Hearts */
+    @keyframes floatUp {
+      0% { transform: translateY(105vh) rotate(0deg) scale(0.8); opacity: 0; }
+      15% { opacity: 0.65; }
+      85% { opacity: 0.65; }
+      100% { transform: translateY(-15vh) rotate(360deg) scale(1.1); opacity: 0; }
+    }
+    .floating-particle {
+      position: fixed;
+      pointer-events: none;
+      z-index: 0;
+      animation: floatUp linear infinite;
+    }
+
+    /* Editable highlight in Creator Mode */
+    body.creator-active .editable-zone {
+      position: relative;
+      transition: all 0.2s ease;
+    }
+    body.creator-active .editable-zone:hover {
+      outline: 2px dashed #d6336c;
+      outline-offset: 6px;
+      border-radius: 1rem;
+    }
+
+    /* Hide creator elements strictly in view-only mode */
+    body.view-only-mode .creator-only {
+      display: none !important;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased selection:bg-rose-200 selection:text-rose-900">
+
+  <!-- Ambient Floating Particles Container -->
+  <div id="particles-container" aria-hidden="true"></div>
+
+  <!-- Floating Music Control Pill (Top Right) -->
+  <div class="fixed top-4 right-4 z-40 flex items-center gap-2">
+    <button id="music-toggle-btn" onclick="toggleRomanticMusic()"
+      class="scrapbook-card px-4 py-2.5 rounded-full flex items-center gap-2 text-roseDeep font-medium text-sm shadow-md hover:scale-105 transition active:scale-95">
+      <i id="music-icon" class="fa-solid fa-music"></i>
+      <span id="music-label">Play Melody</span>
+    </button>
+  </div>
+
+  <!-- =========================================================
+       1. ENVELOPE OPENING OVERLAY (Interactive Gift Entrance)
+       ========================================================= -->
+  <div id="envelope-screen"
+    class="fixed inset-0 z-50 flex flex-col items-center justify-center p-4 bg-gradient-to-br from-[#ffe3ec] via-[#fff0f5] to-[#fffaf0] transition-all duration-1000">
+    
+    <!-- Creator Badge on Envelope if in Creator Mode -->
+    <div class="creator-only mb-4 px-4 py-1.5 rounded-full bg-white/90 border border-rose-200 text-roseDeep text-xs font-semibold shadow-sm flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-roseDeep animate-ping"></span>
+      Creator Mode Active — Customize & Share Your Link Below
+    </div>
+
+    <div class="max-w-md w-full bg-white/90 backdrop-blur-md rounded-3xl p-8 sm:p-10 shadow-2xl border-2 border-rose-100 text-center relative overflow-hidden">
+      <!-- Decorative Corner Florals -->
+      <div class="absolute -top-6 -left-6 w-24 h-24 rounded-full bg-rose-100/60 blur-xl"></div>
+      <div class="absolute -bottom-6 -right-6 w-28 h-28 rounded-full bg-amber-100/60 blur-xl"></div>
+
+      <p class="uppercase tracking-[0.25em] text-xs text-rose-400 font-semibold mb-2">Special Delivery</p>
+      <h1 class="font-script text-4xl sm:text-5xl text-roseDeep mb-2">A Special Gift For</h1>
+      <h2 id="env-recipient-name" class="font-serif text-2xl sm:text-3xl font-bold text-[#4a2535] mb-6">My Favorite Person</h2>
+
+      <!-- Envelope Graphic with Interactive Wax Seal -->
+      <div class="relative mx-auto w-64 h-44 bg-gradient-to-b from-[#fff5f7] to-[#ffe3ec] rounded-2xl border-2 border-rose-200 shadow-inner flex items-center justify-center mb-6">
+        <!-- Envelope Flap Lines -->
+        <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 256 176" fill="none">
+          <path d="M2 2L128 96L254 2" stroke="#f3b6c8" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M2 174L95 92" stroke="#f3b6c8" stroke-width="1.5" stroke-opacity="0.6"/>
+          <path d="M254 174L161 92" stroke="#f3b6c8" stroke-width="1.5" stroke-opacity="0.6"/>
+        </svg>
+
+        <!-- Interactive Wax Seal Button -->
+        <button onclick="openGiftEnvelope()" aria-label="Open Gift Envelope"
+          class="wax-seal relative z-10 w-20 h-20 rounded-full flex flex-col items-center justify-center text-white shadow-xl cursor-pointer transition transform hover:scale-110 active:scale-95">
+          <i class="fa-solid fa-heart text-2xl drop-shadow"></i>
+          <span class="text-[10px] uppercase tracking-wider font-semibold mt-0.5">Open</span>
+        </button>
+      </div>
+
+      <p id="env-hint-text" class="text-sm text-rose-800/75 italic mb-4">Tap the wax seal to open your surprise ✨</p>
+
+      <!-- Quick Edit Envelope Button (Creator Only) -->
+      <button onclick="openEditModal('hero')" class="creator-only text-xs font-medium text-roseDeep underline hover:text-rose-700">
+        <i class="fa-solid fa-pen-to-square mr-1"></i> Edit Recipient Name
+      </button>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       2. MAIN GIFT CONTENT (Revealed after opening envelope)
+       ========================================================= -->
+  <main id="main-gift-content" class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 pt-16 pb-32 space-y-16 opacity-0 transition-opacity duration-1000">
+
+    <!-- SECTION A: HERO BANNER & MAIN POLAROID -->
+    <section class="editable-zone text-center pt-4">
+      <div class="flex justify-center mb-3">
+        <span class="px-4 py-1 rounded-full bg-rose-100/80 border border-rose-200 text-roseDeep text-xs font-semibold tracking-widest uppercase">
+          <i class="fa-solid fa-sparkles mr-1"></i> <span id="display-badge">Forever & Always</span>
+        </span>
+      </div>
+
+      <h1 id="display-hero-title" class="font-script text-5xl sm:text-7xl text-roseDeep drop-shadow-sm mb-3">
+        To My Favorite Person
+      </h1>
+      <p id="display-hero-subtitle" class="font-serif italic text-lg sm:text-xl text-rose-900/80 max-w-xl mx-auto mb-8">
+        Every moment with you feels like my favorite chapter in a book I never want to put down.
+      </p>
+
+      <!-- Main Hero Polaroid Frame -->
+      <div class="relative max-w-xs sm:max-w-sm mx-auto">
+        <div class="washi-tape"></div>
+        <div class="polaroid rounded-xl -rotate-2">
+          <div class="aspect-square w-full overflow-hidden rounded-lg bg-rose-50 relative flex items-center justify-center">
+            <img id="display-hero-img" src="" alt="Our Special Photo"
+              class="w-full h-full object-cover hidden"
+              onerror="this.classList.add('hidden'); document.getElementById('hero-fallback-svg').classList.remove('hidden');" />
+            <!-- Default Romantic Illustration if no photo uploaded -->
+            <div id="hero-fallback-svg" class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-rose-100 via-pink-50 to-amber-50 p-6">
+              <svg class="w-32 h-32 text-roseDeep drop-shadow-sm" viewBox="0 0 200 200" fill="none">
+                <circle cx="100" cy="100" r="85" fill="#fff0f5" stroke="#ffb3c6" stroke-width="3" stroke-dasharray="6 6"/>
+                <path d="M100 148C100 148 45 112 45 74C45 55 60 42 77 42C88 42 96 48 100 56C104 48 112 42 123 42C140 42 155 55 155 74C155 112 100 148 100 148Z" fill="#ff4d6d"/>
+                <path d="M118 60C128 60 136 68 136 78" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
+              </svg>
+              <span class="font-handwriting text-xl text-roseDeep mt-2">You + Me = ❤️</span>
+            </div>
+          </div>
+          <p id="display-hero-caption" class="font-handwriting text-2xl text-[#4a2535] mt-3">
+            My happiest place is right next to you
+          </p>
+        </div>
+      </div>
+
+      <!-- Edit Hero Button (Creator Only) -->
+      <div class="creator-only mt-6">
+        <button onclick="openEditModal('hero')" class="px-4 py-2 rounded-full bg-white text-roseDeep border border-rose-300 text-xs font-semibold shadow-sm hover:bg-rose-50 transition">
+          <i class="fa-solid fa-pen mr-1"></i> Edit Title & Main Photo
+        </button>
+      </div>
+    </section>
+
+    <!-- SECTION B: HEARTFELT LOVE LETTER -->
+    <section class="editable-zone">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-6">
+          <h2 class="font-script text-4xl sm:text-5xl text-roseDeep">A Letter From My Heart</h2>
+          <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-goldAccent to-transparent mx-auto mt-1"></div>
+        </div>
+
+        <div class="lined-paper rounded-2xl p-6 sm:p-10 pl-12 sm:pl-14 border border-rose-200/80 relative">
+          <!-- Gold Wax Corner Accent -->
+          <div class="absolute top-4 right-5 text-goldAccent/70 text-xl">
+            <i class="fa-solid fa-feather-pointed"></i>
+          </div>
+
+          <p class="font-handwriting text-2xl text-roseDeep mb-2">
+            Dearest <span id="display-letter-to">My Love</span>,
+          </p>
+
+          <div id="display-letter-body" class="font-serif text-base sm:text-lg text-[#4a2535] whitespace-pre-line">
+I wanted to make this little corner of the internet just for you, to remind you how deeply loved and appreciated you are every single day.
+
+Thank you for your smile, your warmth, and the way you make ordinary days feel magical. No matter where life takes us, my heart will always choose you.
+          </div>
+
+          <div class="mt-6 text-right">
+            <p class="font-serif italic text-sm text-rose-800/75">Forever yours,</p>
+            <p id="display-letter-from" class="font-handwriting text-3xl text-roseDeep mt-1">Someone Who Adores You</p>
+          </div>
+        </div>
+
+        <!-- Edit Letter Button (Creator Only) -->
+        <div class="creator-only text-center mt-4">
+          <button onclick="openEditModal('letter')" class="px-4 py-2 rounded-full bg-white text-roseDeep border border-rose-300 text-xs font-semibold shadow-sm hover:bg-rose-50 transition">
+            <i class="fa-solid fa-pen mr-1"></i> Edit Love Letter
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION C: REASONS WHY I LOVE YOU (Interactive Flip Cards) -->
+    <section class="editable-zone">
+      <div class="text-center mb-8">
+        <h2 class="font-script text-4xl sm:text-5xl text-roseDeep">Reasons Why I Love You</h2>
+        <p class="text-xs sm:text-sm text-rose-800/70 mt-1">Tap each card to reveal a little secret ✨</p>
+      </div>
+
+      <div id="reasons-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-2xl mx-auto">
+        <!-- Populated dynamically via JS -->
+      </div>
+
+      <!-- Edit Reasons Button (Creator Only) -->
+      <div class="creator-only text-center mt-6">
+        <button onclick="openEditModal('reasons')" class="px-4 py-2 rounded-full bg-white text-roseDeep border border-rose-300 text-xs font-semibold shadow-sm hover:bg-rose-50 transition">
+          <i class="fa-solid fa-pen mr-1"></i> Edit Love Reasons
+        </button>
+      </div>
+    </section>
+
+    <!-- SECTION D: OUR SPECIAL MEMORIES (3 Polaroid Cards) -->
+    <section class="editable-zone">
+      <div class="text-center mb-8">
+        <h2 class="font-script text-4xl sm:text-5xl text-roseDeep">Our Sweetest Moments</h2>
+        <p class="text-xs sm:text-sm text-rose-800/70 mt-1">Snapshots I keep close to my heart 📸</p>
+      </div>
+
+      <div id="memories-grid" class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <!-- Populated dynamically via JS -->
+      </div>
+
+      <!-- Edit Memories Button (Creator Only) -->
+      <div class="creator-only text-center mt-6">
+        <button onclick="openEditModal('memories')" class="px-4 py-2 rounded-full bg-white text-roseDeep border border-rose-300 text-xs font-semibold shadow-sm hover:bg-rose-50 transition">
+          <i class="fa-solid fa-pen mr-1"></i> Edit Memories & Photos
+        </button>
+      </div>
+    </section>
+
+    <!-- SECTION E: INTERACTIVE CUTE QUESTION / PROPOSAL FINALE -->
+    <section class="editable-zone">
+      <div class="scrapbook-card max-w-xl mx-auto rounded-3xl p-8 sm:p-10 text-center border-2 border-rose-200/80 relative overflow-hidden">
+        <div id="question-stage">
+          <div class="w-16 h-16 rounded-full bg-rose-100 text-roseDeep flex items-center justify-center mx-auto mb-4 text-2xl shadow-inner">
+            <i class="fa-solid fa-heart-pulse"></i>
+          </div>
+          <h2 id="display-question-title" class="font-script text-4xl sm:text-5xl text-roseDeep mb-3">
+            Will You Always Be Mine?
+          </h2>
+          <p id="display-question-sub" class="text-sm sm:text-base text-rose-900/80 mb-8">
+            Choose wisely... (Hint: One button is a little shy!)
+          </p>
+
+          <div class="flex flex-wrap items-center justify-center gap-4 relative min-h-[60px]">
+            <button id="yes-btn" onclick="handleYesClick()"
+              class="px-8 py-3.5 rounded-full bg-gradient-to-r from-roseDeep to-pink-500 text-white font-semibold text-base shadow-lg shadow-rose-300/60 hover:scale-105 active:scale-95 transition cursor-pointer z-10">
+              Yes, Forever! ❤️
+            </button>
+
+            <button id="no-btn" onmouseover="dodgeNoButton()" ontouchstart="dodgeNoButton(event)" onclick="dodgeNoButton(event)"
+              class="px-6 py-3 rounded-full bg-white text-rose-700 border border-rose-200 font-medium text-sm shadow-sm transition-all duration-200 cursor-pointer">
+              No 🙈
+            </button>
+          </div>
+        </div>
+
+        <!-- Celebration State (Shown after clicking Yes) -->
+        <div id="yes-celebration-stage" class="hidden py-4 animate-fade-in">
+          <div class="text-5xl mb-3">🥰💖🎉</div>
+          <h3 class="font-script text-4xl sm:text-5xl text-roseDeep mb-3">Yay!! I Knew It!</h3>
+          <p id="display-yes-response" class="font-serif text-lg text-[#4a2535] max-w-md mx-auto mb-6">
+            You just made me the happiest person in the world! I love you endlessly! ❤️
+          </p>
+          <button onclick="triggerHeartExplosion()" class="px-5 py-2 rounded-full bg-rose-100 text-roseDeep text-xs font-semibold hover:bg-rose-200 transition">
+            <i class="fa-solid fa-heart mr-1"></i> Send More Love
+          </button>
+        </div>
+
+        <!-- Edit Question Button (Creator Only) -->
+        <div class="creator-only mt-6 pt-4 border-t border-rose-100">
+          <button onclick="openEditModal('question')" class="px-4 py-2 rounded-full bg-white text-roseDeep border border-rose-300 text-xs font-semibold shadow-sm hover:bg-rose-50 transition">
+            <i class="fa-solid fa-pen mr-1"></i> Edit Finale Question
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subtle Romantic Footer -->
+    <footer class="text-center text-xs text-rose-800/60 pt-4">
+      <p>Made with all my heart ❤️ <span id="footer-sender">Just For You</span></p>
+    </footer>
+  </main>
+
+  
