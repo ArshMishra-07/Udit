@@ -805,5 +805,32 @@ Thank you for your smile, your warmth, and the way you make ordinary days feel m
       heart.style.opacity = "0.75";
       heart.style.pointerEvents = "none";
       heart.style.zIndex = "5";
- 
+       heart.style.transition = `transform ${burst ? 3 : 6 + Math.random() * 4}s linear, opacity 4s ease-out`;
+
+      container.appendChild(heart);
+
+      requestAnimationFrame(() => {
+        heart.style.transform = `translateY(-110vh) rotate(${Math.random() * 360}deg)`;
+        heart.style.opacity = "0";
+      });
+
+      setTimeout(() => heart.remove(), 10000);
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById("toast");
+      const toastMsg = document.getElementById("toast-msg");
+      if (!toast || !toastMsg) return;
+      toastMsg.textContent = msg;
+      toast.style.opacity = "1";
+      setTimeout(() => {
+        toast.style.opacity = "0";
+      }, 3500);
+    }
+
+    window.addEventListener("DOMContentLoaded", initApp);
+  </script>
+</body>
+</html>
+
   
