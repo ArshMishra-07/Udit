@@ -570,6 +570,121 @@ Thank you for your smile, your warmth, and the way you make ordinary days feel m
         </button>
         <div class="flex gap-2">
           <button onclick="closeEditModal()" class="px-4 py-2 rounded-xl border border-gray-200 text-gray-600 text-xs font-semibold hover:bg-gray-100">
+  <!-- =========================================================
+       4. CREATOR EDIT MODAL (All Customization Controls with Direct Photo Upload)
+       ========================================================= -->
+  <div id="edit-modal" class="creator-only hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-hidden shadow-2xl flex flex-col border border-rose-100">
+      <!-- Modal Header -->
+      <div class="px-6 py-4 bg-gradient-to-r from-rose-50 to-pink-50 border-b border-rose-100 flex items-center justify-between">
+        <div>
+          <h3 class="font-serif text-xl font-bold text-gray-800">Customize Your Digital Gift ✨</h3>
+          <p class="text-xs text-gray-500">Saare changes auto-save hote hain aur link me encode ho jayenge</p>
+        </div>
+        <button onclick="closeEditModal()" class="w-8 h-8 rounded-full bg-white text-gray-500 hover:text-rose-600 flex items-center justify-center shadow-sm">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body (Scrollable Form) -->
+      <div class="p-6 overflow-y-auto space-y-6 text-sm">
+        <!-- Names & Title -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Recipient Name (Jiske liye gift hai)</label>
+            <input type="text" id="input-to" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 focus:border-rose-400 focus:outline-none" placeholder="e.g. My Love / Priya" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Your Name (Aapka naam)</label>
+            <input type="text" id="input-from" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 focus:border-rose-400 focus:outline-none" placeholder="e.g. Yours Forever / Rahul" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Hero Headline</label>
+          <input type="text" id="input-headline" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 focus:border-rose-400 focus:outline-none" placeholder="e.g. Every Love Story Is Beautiful, But Ours Is My Favorite" />
+        </div>
+
+        <!-- Love Letter -->
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Secret Love Letter</label>
+          <textarea id="input-letter" rows="4" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 focus:border-rose-400 focus:outline-none" placeholder="Apne dil ki baat yahan likhein..."></textarea>
+        </div>
+
+        <!-- Background Music Selector -->
+        <div class="p-3.5 rounded-2xl bg-pink-50/70 border border-rose-200">
+          <label class="block text-xs font-bold uppercase tracking-wider text-rose-700 mb-1.5">
+            🎵 Background Music (MP3 seलेक्ट करें या डिफ़ॉल्ट रहने दें)
+          </label>
+          <input type="file" id="input-music-file" accept="audio/*" class="w-full text-xs text-gray-600 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-rose-600 file:text-white hover:file:bg-rose-700 cursor-pointer" />
+          <p id="music-status" class="text-[11px] text-gray-500 mt-1">Default: Romantic Piano Melody 🎹</p>
+        </div>
+
+        <!-- Memories / Polaroids (Direct Photo Upload) -->
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">
+            📸 3 Special Memories (गैलरी से फोटो चुनें + कैप्शन लिखें)
+          </label>
+          <div class="space-y-3">
+            <!-- Photo 1 -->
+            <div class="p-3 rounded-2xl bg-rose-50/50 border border-rose-100 space-y-2">
+              <div class="flex items-center justify-between gap-2">
+                <input type="file" id="input-mem1-file" accept="image/*" onchange="handlePhotoUpload(this, 1)" class="text-xs text-gray-600 file:mr-2 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-rose-500 file:text-white cursor-pointer" />
+                <img id="preview-mem1" src="" class="w-10 h-10 rounded-lg object-cover border border-rose-200" />
+              </div>
+              <input type="text" id="input-mem1-cap" class="w-full px-3 py-1.5 rounded-lg border border-gray-200 text-xs" placeholder="Caption 1 (e.g. Our First Date)" />
+            </div>
+
+            <!-- Photo 2 -->
+            <div class="p-3 rounded-2xl bg-rose-50/50 border border-rose-100 space-y-2">
+              <div class="flex items-center justify-between gap-2">
+                <input type="file" id="input-mem2-file" accept="image/*" onchange="handlePhotoUpload(this, 2)" class="text-xs text-gray-600 file:mr-2 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-rose-500 file:text-white cursor-pointer" />
+                <img id="preview-mem2" src="" class="w-10 h-10 rounded-lg object-cover border border-rose-200" />
+              </div>
+              <input type="text" id="input-mem2-cap" class="w-full px-3 py-1.5 rounded-lg border border-gray-200 text-xs" placeholder="Caption 2 (e.g. Late Night Talks)" />
+            </div>
+
+            <!-- Photo 3 -->
+            <div class="p-3 rounded-2xl bg-rose-50/50 border border-rose-100 space-y-2">
+              <div class="flex items-center justify-between gap-2">
+                <input type="file" id="input-mem3-file" accept="image/*" onchange="handlePhotoUpload(this, 3)" class="text-xs text-gray-600 file:mr-2 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-rose-500 file:text-white cursor-pointer" />
+                <img id="preview-mem3" src="" class="w-10 h-10 rounded-lg object-cover border border-rose-200" />
+              </div>
+              <input type="text" id="input-mem3-cap" class="w-full px-3 py-1.5 rounded-lg border border-gray-200 text-xs" placeholder="Caption 3 (e.g. Forever & Always)" />
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Reasons Why I Love You (Flip Cards) -->
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">3 Reasons I Adore You (Flip Cards)</label>
+          <div class="space-y-2">
+            <input type="text" id="input-reason1" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 text-xs" placeholder="Reason 1..." />
+            <input type="text" id="input-reason2" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 text-xs" placeholder="Reason 2..." />
+            <input type="text" id="input-reason3" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 text-xs" placeholder="Reason 3..." />
+          </div>
+        </div>
+
+        <!-- Finale Question -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Finale Cute Question</label>
+            <input type="text" id="input-question" class="w-full px-3.5 py-2 rounded-xl border border-gray-200" placeholder="e.g. Will you stay mine forever?" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Celebration Reply Message</label>
+            <input type="text" id="input-yes-msg" class="w-full px-3.5 py-2 rounded-xl border border-gray-200" placeholder="e.g. Yay! You made me the happiest person alive! ❤️" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="px-6 py-4 bg-gray-50 border-t border-gray-100 flex items-center justify-between">
+        <button onclick="resetToDefault()" class="text-xs text-gray-400 hover:text-red-500 transition">
+          Reset Default
+        </button>
+        <div class="flex gap-2">
+          <button onclick="closeEditModal()" class="px-4 py-2 rounded-xl border border-gray-200 text-gray-600 text-xs font-semibold hover:bg-gray-100">
             Cancel
           </button>
           <button onclick="saveChanges()" class="px-5 py-2 rounded-xl bg-rose-600 text-white text-xs font-bold hover:bg-rose-700 shadow-md">
@@ -579,6 +694,7 @@ Thank you for your smile, your warmth, and the way you make ordinary days feel m
       </div>
     </div>
   </div>
+
   <!-- Romantic Background Audio & Floating Toggle Button -->
   <audio id="bg-music" loop preload="auto">
     <source src="https://cdn.pixabay.com/download/audio/2022/02/07/audio_1822015284.mp3" type="audio/mpeg">
@@ -586,12 +702,13 @@ Thank you for your smile, your warmth, and the way you make ordinary days feel m
   <button id="music-toggle-btn" onclick="toggleMusic()" class="fixed top-4 right-4 z-50 w-10 h-10 rounded-full bg-white/85 backdrop-blur-md text-rose-600 shadow-lg border border-rose-200 flex items-center justify-center hover:scale-105 transition" title="Play/Pause Music">
     <i id="music-icon" class="fa-solid fa-music"></i>
   </button>
-  
+
   <!-- Toast Notification -->
   <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 z-[60] bg-gray-900 text-white px-5 py-3 rounded-full text-xs font-medium shadow-2xl opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-2">
     <i class="fa-solid fa-circle-check text-emerald-400"></i>
     <span id="toast-msg">Link copied!</span>
   </div>
+            
 
   <!-- =========================================================
        5. JAVASCRIPT LOGIC (State, View-Only Security, Animations)
