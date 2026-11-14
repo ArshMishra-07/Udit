@@ -1,121 +1,40 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>A Special Romantic Gift For You ❤️</title>
-  <!-- Tailwind CSS -->
+  <title>For You — A Special Digital Gift ✨</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Romantic Script, Serif & Clean Sans -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <!-- LZ-String for lossless URL compression so share links stay clean and reliable -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            blush: '#fff0f5',
-            cream: '#fffaf0',
-            roseDeep: '#d6336c',
-            roseSoft: '#ff85a2',
-            goldAccent: '#d4af37',
-          },
-          fontFamily: {
-            script: ['"Great Vibes"', 'cursive'],
-            handwriting: ['"Dancing Script"', 'cursive'],
-            serif: ['"Playfair Display"', 'serif'],
-            sans: ['"Poppins"', 'sans-serif'],
-          }
-        }
-      }
-    }
-  </script>
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* Custom romantic animations & textures */
     body {
-      background: linear-gradient(135deg, #fff0f5 0%, #fffaf0 50%, #ffe3ec 100%);
-      color: #4a2535;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: linear-gradient(135deg, #fff1f5 0%, #ffe4ec 50%, #fdf2f8 100%);
+      color: #3b1824;
       overflow-x: hidden;
-      scroll-behavior: smooth;
     }
-
-    /* Glassmorphism Scrapbook Card */
-    .scrapbook-card {
+    .font-serif-display {
+      font-family: 'Cormorant Garamond', serif;
+    }
+    .glass-card {
       background: rgba(255, 255, 255, 0.78);
       backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.9);
-      box-shadow: 0 15px 35px rgba(214, 51, 108, 0.08), 0 5px 15px rgba(0, 0, 0, 0.03);
+      border: 1px solid rgba(244, 114, 182, 0.25);
     }
-
-    /* Realistic Lined Paper for Love Letter */
-    .lined-paper {
-      background-color: #fffdf9;
-      background-image: linear-gradient(#f3d9e2 1px, transparent 1px);
-      background-size: 100% 2.1rem;
-      line-height: 2.1rem;
-      box-shadow: 0 10px 30px rgba(180, 120, 140, 0.15);
-      position: relative;
-    }
-    .lined-paper::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 2.2rem;
-      width: 1px;
-      background-color: rgba(214, 51, 108, 0.25);
-    }
-
-    /* Polaroid Frame Styling */
-    .polaroid {
-      background: #ffffff;
-      padding: 12px 12px 36px 12px;
-      box-shadow: 0 12px 25px rgba(74, 37, 53, 0.12);
-      transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.35s ease;
-    }
-    .polaroid:hover {
-      transform: scale(1.03) rotate(0deg) !important;
-      box-shadow: 0 20px 35px rgba(214, 51, 108, 0.18);
-      z-index: 10;
-    }
-
-    /* Washi Tape Effect */
-    .washi-tape {
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%) rotate(-3deg);
-      width: 90px;
-      height: 24px;
-      background: rgba(255, 182, 193, 0.65);
-      border-left: 2px dashed rgba(255,255,255,0.6);
-      border-right: 2px dashed rgba(255,255,255,0.6);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-      z-index: 5;
-    }
-
-    /* 3D Flip Card for Reasons Why I Love You */
+    /* Flip Card Effect */
     .flip-card {
       perspective: 1000px;
-      cursor: pointer;
+      height: 190px;
     }
     .flip-card-inner {
       position: relative;
       width: 100%;
       height: 100%;
-      text-align: center;
       transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
       transform-style: preserve-3d;
     }
+    .flip-card:hover .flip-card-inner,
     .flip-card.flipped .flip-card-inner {
       transform: rotateY(180deg);
     }
@@ -123,304 +42,183 @@
       position: absolute;
       width: 100%;
       height: 100%;
-      -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
-      border-radius: 1.25rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 1.25rem;
+      border-radius: 1.5rem;
     }
     .flip-card-back {
       transform: rotateY(180deg);
     }
-
-    /* Envelope Wax Seal Pulse */
-    @keyframes sealPulse {
-      0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(214, 51, 108, 0.5); }
-      50% { transform: scale(1.06); box-shadow: 0 0 0 14px rgba(214, 51, 108, 0); }
+    @keyframes pulseSeal {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.07); }
     }
     .wax-seal {
-      animation: sealPulse 2.2s infinite;
-      background: radial-gradient(circle at 30% 30%, #e64980, #a61e4d);
-      border: 3px solid #f8c291;
-    }
-
-    /* Floating Background Hearts */
-    @keyframes floatUp {
-      0% { transform: translateY(105vh) rotate(0deg) scale(0.8); opacity: 0; }
-      15% { opacity: 0.65; }
-      85% { opacity: 0.65; }
-      100% { transform: translateY(-15vh) rotate(360deg) scale(1.1); opacity: 0; }
-    }
-    .floating-particle {
-      position: fixed;
-      pointer-events: none;
-      z-index: 0;
-      animation: floatUp linear infinite;
-    }
-
-    /* Editable highlight in Creator Mode */
-    body.creator-active .editable-zone {
-      position: relative;
-      transition: all 0.2s ease;
-    }
-    body.creator-active .editable-zone:hover {
-      outline: 2px dashed #d6336c;
-      outline-offset: 6px;
-      border-radius: 1rem;
-    }
-
-    /* Hide creator elements strictly in view-only mode */
-    body.view-only-mode .creator-only {
-      display: none !important;
+      animation: pulseSeal 2s infinite ease-in-out;
     }
   </style>
 </head>
-<body class="font-sans antialiased selection:bg-rose-200 selection:text-rose-900">
+<body class="min-h-screen relative selection:bg-rose-200 selection:text-rose-900">
 
-  <!-- Ambient Floating Particles Container -->
-  <div id="particles-container" aria-hidden="true"></div>
-
-  <!-- Floating Music Control Pill (Top Right) -->
-  <div class="fixed top-4 right-4 z-40 flex items-center gap-2">
-    <button id="music-toggle-btn" onclick="toggleRomanticMusic()"
-      class="scrapbook-card px-4 py-2.5 rounded-full flex items-center gap-2 text-roseDeep font-medium text-sm shadow-md hover:scale-105 transition active:scale-95">
-      <i id="music-icon" class="fa-solid fa-music"></i>
-      <span id="music-label">Play Melody</span>
-    </button>
-  </div>
+  <!-- Floating Hearts Container -->
+  <div id="hearts-container" class="fixed inset-0 pointer-events-none z-0"></div>
 
   <!-- =========================================================
-       1. ENVELOPE OPENING OVERLAY (Interactive Gift Entrance)
+       1. WAX-SEAL ENVELOPE INTRO SCREEN
        ========================================================= -->
-  <div id="envelope-screen"
-    class="fixed inset-0 z-50 flex flex-col items-center justify-center p-4 bg-gradient-to-br from-[#ffe3ec] via-[#fff0f5] to-[#fffaf0] transition-all duration-1000">
-    
-    <!-- Creator Badge on Envelope if in Creator Mode -->
-    <div class="creator-only mb-4 px-4 py-1.5 rounded-full bg-white/90 border border-rose-200 text-roseDeep text-xs font-semibold shadow-sm flex items-center gap-2">
-      <span class="w-2 h-2 rounded-full bg-roseDeep animate-ping"></span>
-      Creator Mode Active — Customize & Share Your Link Below
-    </div>
-
-    <div class="max-w-md w-full bg-white/90 backdrop-blur-md rounded-3xl p-8 sm:p-10 shadow-2xl border-2 border-rose-100 text-center relative overflow-hidden">
-      <!-- Decorative Corner Florals -->
-      <div class="absolute -top-6 -left-6 w-24 h-24 rounded-full bg-rose-100/60 blur-xl"></div>
-      <div class="absolute -bottom-6 -right-6 w-28 h-28 rounded-full bg-amber-100/60 blur-xl"></div>
-
-      <p class="uppercase tracking-[0.25em] text-xs text-rose-400 font-semibold mb-2">Special Delivery</p>
-      <h1 class="font-script text-4xl sm:text-5xl text-roseDeep mb-2">A Special Gift For</h1>
-      <h2 id="env-recipient-name" class="font-serif text-2xl sm:text-3xl font-bold text-[#4a2535] mb-6">My Favorite Person</h2>
-
-      <!-- Envelope Graphic with Interactive Wax Seal -->
-      <div class="relative mx-auto w-64 h-44 bg-gradient-to-b from-[#fff5f7] to-[#ffe3ec] rounded-2xl border-2 border-rose-200 shadow-inner flex items-center justify-center mb-6">
-        <!-- Envelope Flap Lines -->
-        <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 256 176" fill="none">
-          <path d="M2 2L128 96L254 2" stroke="#f3b6c8" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M2 174L95 92" stroke="#f3b6c8" stroke-width="1.5" stroke-opacity="0.6"/>
-          <path d="M254 174L161 92" stroke="#f3b6c8" stroke-width="1.5" stroke-opacity="0.6"/>
-        </svg>
-
-        <!-- Interactive Wax Seal Button -->
-        <button onclick="openGiftEnvelope()" aria-label="Open Gift Envelope"
-          class="wax-seal relative z-10 w-20 h-20 rounded-full flex flex-col items-center justify-center text-white shadow-xl cursor-pointer transition transform hover:scale-110 active:scale-95">
-          <i class="fa-solid fa-heart text-2xl drop-shadow"></i>
-          <span class="text-[10px] uppercase tracking-wider font-semibold mt-0.5">Open</span>
-        </button>
+  <div id="envelope-intro" class="fixed inset-0 z-30 flex items-center justify-center p-4 bg-gradient-to-br from-[#3b0d1e] via-[#59142e] to-[#2b0916] text-white transition-opacity duration-700">
+    <div class="max-w-md w-full text-center space-y-6 p-8 rounded-3xl bg-white/10 backdrop-blur-md border border-rose-300/20 shadow-2xl">
+      <div class="inline-block px-3.5 py-1 rounded-full bg-rose-500/20 border border-rose-300/30 text-rose-200 text-xs tracking-widest uppercase">
+        Special Delivery ✨
       </div>
+      <h1 class="font-serif-display text-4xl sm:text-5xl font-bold text-rose-100 leading-tight">
+        A Little Surprise For <span id="display-to" class="text-pink-300 underline decoration-pink-400/50">My Favorite Person</span>
+      </h1>
+      <p class="text-sm text-rose-200/80">Tap the wax seal below to unlock your gift</p>
 
-      <p id="env-hint-text" class="text-sm text-rose-800/75 italic mb-4">Tap the wax seal to open your surprise ✨</p>
-
-      <!-- Quick Edit Envelope Button (Creator Only) -->
-      <button onclick="openEditModal('hero')" class="creator-only text-xs font-medium text-roseDeep underline hover:text-rose-700">
-        <i class="fa-solid fa-pen-to-square mr-1"></i> Edit Recipient Name
+      <button onclick="openGiftEnvelope()" class="wax-seal mx-auto w-24 h-24 rounded-full bg-gradient-to-br from-rose-500 via-red-600 to-rose-800 shadow-2xl shadow-rose-950 border-4 border-rose-300/40 flex flex-col items-center justify-center text-white cursor-pointer group">
+        <i class="fa-solid fa-heart text-3xl group-hover:scale-110 transition"></i>
+        <span class="text-[10px] font-bold uppercase tracking-widest mt-1">Open</span>
       </button>
     </div>
   </div>
 
   <!-- =========================================================
-       2. MAIN GIFT CONTENT (Revealed after opening envelope)
+       2. MAIN ROMANTIC GIFT CONTENT
        ========================================================= -->
-  <main id="main-gift-content" class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 pt-16 pb-32 space-y-16 opacity-0 transition-opacity duration-1000">
+  <main id="gift-main" class="hidden opacity-0 transition-opacity duration-1000 relative z-10 max-w-4xl mx-auto px-4 pt-12 pb-32 space-y-16">
 
-    <!-- SECTION A: HERO BANNER & MAIN POLAROID -->
-    <section class="editable-zone text-center pt-4">
-      <div class="flex justify-center mb-3">
-        <span class="px-4 py-1 rounded-full bg-rose-100/80 border border-rose-200 text-roseDeep text-xs font-semibold tracking-widest uppercase">
-          <i class="fa-solid fa-sparkles mr-1"></i> <span id="display-badge">Forever & Always</span>
-        </span>
+    <!-- Hero Section -->
+    <section class="text-center space-y-4 pt-6">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 border border-rose-200 text-rose-600 text-xs font-semibold shadow-sm">
+        <i class="fa-solid fa-sparkles"></i> Made Exclusively For <span id="display-to-hero">My Favorite Person</span>
+      </div>
+      <h1 id="display-headline" class="font-serif-display text-4xl sm:text-6xl font-bold text-[#3b1824] leading-tight max-w-3xl mx-auto">
+        Every Story Is Beautiful, But Ours Is My Favorite
+      </h1>
+      <p class="text-sm text-rose-700/80 font-medium">Scroll down slowly to read everything made for you ↓</p>
+    </section>
+
+    <!-- Love / Friendship Letter Section -->
+    <section class="glass-card rounded-3xl p-7 sm:p-12 shadow-xl relative overflow-hidden">
+      <div class="flex items-center justify-between mb-6">
+        <div class="flex items-center gap-2 text-rose-600 font-bold text-xs uppercase tracking-widest">
+          <i class="fa-solid fa-envelope-open-text text-base"></i> A Letter From The Heart
+        </div>
+        <button onclick="openEditModal()" class="creator-only inline-edit-btn px-3 py-1 rounded-full bg-rose-100 text-rose-700 text-xs font-semibold hover:bg-rose-200 transition">
+          <i class="fa-solid fa-pen"></i> Edit
+        </button>
+      </div>
+      <p id="display-letter" class="whitespace-pre-line text-base sm:text-lg leading-relaxed text-gray-700 font-normal"></p>
+      <div class="mt-8 pt-6 border-t border-rose-200/60 flex items-center justify-between">
+        <div>
+          <p class="text-xs text-gray-400 uppercase tracking-wider">Forever & Always,</p>
+          <p id="display-from" class="font-serif-display text-2xl font-bold text-rose-700">Yours Always</p>
+        </div>
+        <div class="w-12 h-12 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center text-xl">
+          💌
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 Polaroid Photo Memories -->
+    <section class="space-y-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="font-serif-display text-3xl sm:text-4xl font-bold text-[#3b1824]">Captured Moments 📸</h2>
+          <p class="text-xs text-rose-600/80">Little snapshots that mean the world to me</p>
+        </div>
+        <button onclick="openEditModal()" class="creator-only inline-edit-btn px-3 py-1 rounded-full bg-rose-100 text-rose-700 text-xs font-semibold hover:bg-rose-200 transition">
+          <i class="fa-solid fa-camera"></i> Change Photos
+        </button>
       </div>
 
-      <h1 id="display-hero-title" class="font-script text-5xl sm:text-7xl text-roseDeep drop-shadow-sm mb-3">
-        To My Favorite Person
-      </h1>
-      <p id="display-hero-subtitle" class="font-serif italic text-lg sm:text-xl text-rose-900/80 max-w-xl mx-auto mb-8">
-        Every moment with you feels like my favorite chapter in a book I never want to put down.
-      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <!-- Polaroid 1 -->
+        <div class="bg-white p-3.5 pb-6 rounded-2xl shadow-lg border border-rose-100 transform -rotate-2 hover:rotate-0 transition duration-300">
+          <img id="display-mem1-img" src="" alt="Memory 1" class="w-full h-56 object-cover rounded-xl mb-3 bg-rose-50" />
+          <p id="display-mem1-cap" class="text-center font-serif-display text-xl font-bold text-gray-800"></p>
+        </div>
+        <!-- Polaroid 2 -->
+        <div class="bg-white p-3.5 pb-6 rounded-2xl shadow-lg border border-rose-100 transform rotate-1 hover:rotate-0 transition duration-300">
+          <img id="display-mem2-img" src="" alt="Memory 2" class="w-full h-56 object-cover rounded-xl mb-3 bg-rose-50" />
+          <p id="display-mem2-cap" class="text-center font-serif-display text-xl font-bold text-gray-800"></p>
+        </div>
+        <!-- Polaroid 3 -->
+        <div class="bg-white p-3.5 pb-6 rounded-2xl shadow-lg border border-rose-100 transform -rotate-1 hover:rotate-0 transition duration-300">
+          <img id="display-mem3-img" src="" alt="Memory 3" class="w-full h-56 object-cover rounded-xl mb-3 bg-rose-50" />
+          <p id="display-mem3-cap" class="text-center font-serif-display text-xl font-bold text-gray-800"></p>
+        </div>
+      </div>
+    </section>
 
-      <!-- Main Hero Polaroid Frame -->
-      <div class="relative max-w-xs sm:max-w-sm mx-auto">
-        <div class="washi-tape"></div>
-        <div class="polaroid rounded-xl -rotate-2">
-          <div class="aspect-square w-full overflow-hidden rounded-lg bg-rose-50 relative flex items-center justify-center">
-            <img id="display-hero-img" src="" alt="Our Special Photo"
-              class="w-full h-full object-cover hidden"
-              onerror="this.classList.add('hidden'); document.getElementById('hero-fallback-svg').classList.remove('hidden');" />
-            <!-- Default Romantic Illustration if no photo uploaded -->
-            <div id="hero-fallback-svg" class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-rose-100 via-pink-50 to-amber-50 p-6">
-              <svg class="w-32 h-32 text-roseDeep drop-shadow-sm" viewBox="0 0 200 200" fill="none">
-                <circle cx="100" cy="100" r="85" fill="#fff0f5" stroke="#ffb3c6" stroke-width="3" stroke-dasharray="6 6"/>
-                <path d="M100 148C100 148 45 112 45 74C45 55 60 42 77 42C88 42 96 48 100 56C104 48 112 42 123 42C140 42 155 55 155 74C155 112 100 148 100 148Z" fill="#ff4d6d"/>
-                <path d="M118 60C128 60 136 68 136 78" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
-              </svg>
-              <span class="font-handwriting text-xl text-roseDeep mt-2">You + Me = ❤️</span>
+    <!-- 3 Interactive Flip Cards -->
+    <section class="space-y-6">
+      <div class="text-center space-y-1">
+        <h2 class="font-serif-display text-3xl sm:text-4xl font-bold text-[#3b1824]">3 Things I Adore About You ✨</h2>
+        <p class="text-xs text-rose-600/80">Tap each card to reveal what's inside</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+        <div class="flip-card cursor-pointer" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner shadow-lg">
+            <div class="flip-card-front bg-gradient-to-br from-rose-500 to-pink-600 text-white p-6 flex flex-col items-center justify-center text-center">
+              <span class="text-3xl mb-2">🌸</span>
+              <h3 class="font-serif-display text-2xl font-bold">Reason #1</h3>
+              <p class="text-xs text-rose-100 mt-1">Tap to flip</p>
+            </div>
+            <div class="flip-card-back glass-card p-6 flex items-center justify-center text-center">
+              <p id="display-reason1" class="text-sm font-medium text-gray-800 leading-relaxed"></p>
             </div>
           </div>
-          <p id="display-hero-caption" class="font-handwriting text-2xl text-[#4a2535] mt-3">
-            My happiest place is right next to you
-          </p>
+        </div>
+
+        <div class="flip-card cursor-pointer" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner shadow-lg">
+            <div class="flip-card-front bg-gradient-to-br from-pink-500 to-rose-600 text-white p-6 flex flex-col items-center justify-center text-center">
+              <span class="text-3xl mb-2">✨</span>
+              <h3 class="font-serif-display text-2xl font-bold">Reason #2</h3>
+              <p class="text-xs text-rose-100 mt-1">Tap to flip</p>
+            </div>
+            <div class="flip-card-back glass-card p-6 flex items-center justify-center text-center">
+              <p id="display-reason2" class="text-sm font-medium text-gray-800 leading-relaxed"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card cursor-pointer" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner shadow-lg">
+            <div class="flip-card-front bg-gradient-to-br from-rose-600 to-red-500 text-white p-6 flex flex-col items-center justify-center text-center">
+              <span class="text-3xl mb-2">💖</span>
+              <h3 class="font-serif-display text-2xl font-bold">Reason #3</h3>
+              <p class="text-xs text-rose-100 mt-1">Tap to flip</p>
+            </div>
+            <div class="flip-card-back glass-card p-6 flex items-center justify-center text-center">
+              <p id="display-reason3" class="text-sm font-medium text-gray-800 leading-relaxed"></p>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
 
-      <!-- Edit Hero Button (Creator Only) -->
-      <div class="creator-only mt-6">
-        <button onclick="openEditModal('hero')" class="px-4 py-2 rounded-full bg-white text-roseDeep border border-rose-300 text-xs font-semibold shadow-sm hover:bg-rose-50 transition">
-          <i class="fa-solid fa-pen mr-1"></i> Edit Title & Main Photo
+    <!-- Finale Cute Question -->
+    <section class="glass-card rounded-3xl p-8 sm:p-12 text-center shadow-xl space-y-6">
+      <div class="text-4xl">💝</div>
+      <h2 id="display-question" class="font-serif-display text-3xl sm:text-5xl font-bold text-[#3b1824]">
+        Will you stay my favorite person forever?
+      </h2>
+      <div class="flex items-center justify-center gap-4 pt-2 relative min-h-[60px]">
+        <button onclick="celebrateYes()" class="px-8 py-3 rounded-full bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white font-bold text-sm shadow-lg shadow-rose-500/30 transform hover:scale-105 transition cursor-pointer">
+          Yes, Always! ❤️
+        </button>
+        <button onmouseover="dodgeNoButton(this)" onclick="dodgeNoButton(this)" class="px-6 py-3 rounded-full bg-white border border-gray-200 text-gray-500 font-semibold text-sm transition-all duration-200 cursor-pointer">
+          No 🙈
         </button>
       </div>
+      <p id="yes-response" class="hidden text-base sm:text-lg font-bold text-rose-600 bg-rose-50 py-3 px-6 rounded-2xl border border-rose-200 inline-block"></p>
     </section>
 
-    <!-- SECTION B: HEARTFELT LOVE LETTER -->
-    <section class="editable-zone">
-      <div class="max-w-2xl mx-auto">
-        <div class="text-center mb-6">
-          <h2 class="font-script text-4xl sm:text-5xl text-roseDeep">A Letter From My Heart</h2>
-          <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-goldAccent to-transparent mx-auto mt-1"></div>
-        </div>
-
-        <div class="lined-paper rounded-2xl p-6 sm:p-10 pl-12 sm:pl-14 border border-rose-200/80 relative">
-          <!-- Gold Wax Corner Accent -->
-          <div class="absolute top-4 right-5 text-goldAccent/70 text-xl">
-            <i class="fa-solid fa-feather-pointed"></i>
-          </div>
-
-          <p class="font-handwriting text-2xl text-roseDeep mb-2">
-            Dearest <span id="display-letter-to">My Love</span>,
-          </p>
-
-          <div id="display-letter-body" class="font-serif text-base sm:text-lg text-[#4a2535] whitespace-pre-line">
-I wanted to make this little corner of the internet just for you, to remind you how deeply loved and appreciated you are every single day.
-
-Thank you for your smile, your warmth, and the way you make ordinary days feel magical. No matter where life takes us, my heart will always choose you.
-          </div>
-
-          <div class="mt-6 text-right">
-            <p class="font-serif italic text-sm text-rose-800/75">Forever yours,</p>
-            <p id="display-letter-from" class="font-handwriting text-3xl text-roseDeep mt-1">Someone Who Adores You</p>
-          </div>
-        </div>
-
-        <!-- Edit Letter Button (Creator Only) -->
-        <div class="creator-only text-center mt-4">
-          <button onclick="openEditModal('letter')" class="px-4 py-2 rounded-full bg-white text-roseDeep border border-rose-300 text-xs font-semibold shadow-sm hover:bg-rose-50 transition">
-            <i class="fa-solid fa-pen mr-1"></i> Edit Love Letter
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION C: REASONS WHY I LOVE YOU (Interactive Flip Cards) -->
-    <section class="editable-zone">
-      <div class="text-center mb-8">
-        <h2 class="font-script text-4xl sm:text-5xl text-roseDeep">Reasons Why I Love You</h2>
-        <p class="text-xs sm:text-sm text-rose-800/70 mt-1">Tap each card to reveal a little secret ✨</p>
-      </div>
-
-      <div id="reasons-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-2xl mx-auto">
-        <!-- Populated dynamically via JS -->
-      </div>
-
-      <!-- Edit Reasons Button (Creator Only) -->
-      <div class="creator-only text-center mt-6">
-        <button onclick="openEditModal('reasons')" class="px-4 py-2 rounded-full bg-white text-roseDeep border border-rose-300 text-xs font-semibold shadow-sm hover:bg-rose-50 transition">
-          <i class="fa-solid fa-pen mr-1"></i> Edit Love Reasons
-        </button>
-      </div>
-    </section>
-
-    <!-- SECTION D: OUR SPECIAL MEMORIES (3 Polaroid Cards) -->
-    <section class="editable-zone">
-      <div class="text-center mb-8">
-        <h2 class="font-script text-4xl sm:text-5xl text-roseDeep">Our Sweetest Moments</h2>
-        <p class="text-xs sm:text-sm text-rose-800/70 mt-1">Snapshots I keep close to my heart 📸</p>
-      </div>
-
-      <div id="memories-grid" class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-        <!-- Populated dynamically via JS -->
-      </div>
-
-      <!-- Edit Memories Button (Creator Only) -->
-      <div class="creator-only text-center mt-6">
-        <button onclick="openEditModal('memories')" class="px-4 py-2 rounded-full bg-white text-roseDeep border border-rose-300 text-xs font-semibold shadow-sm hover:bg-rose-50 transition">
-          <i class="fa-solid fa-pen mr-1"></i> Edit Memories & Photos
-        </button>
-      </div>
-    </section>
-
-    <!-- SECTION E: INTERACTIVE CUTE QUESTION / PROPOSAL FINALE -->
-    <section class="editable-zone">
-      <div class="scrapbook-card max-w-xl mx-auto rounded-3xl p-8 sm:p-10 text-center border-2 border-rose-200/80 relative overflow-hidden">
-        <div id="question-stage">
-          <div class="w-16 h-16 rounded-full bg-rose-100 text-roseDeep flex items-center justify-center mx-auto mb-4 text-2xl shadow-inner">
-            <i class="fa-solid fa-heart-pulse"></i>
-          </div>
-          <h2 id="display-question-title" class="font-script text-4xl sm:text-5xl text-roseDeep mb-3">
-            Will You Always Be Mine?
-          </h2>
-          <p id="display-question-sub" class="text-sm sm:text-base text-rose-900/80 mb-8">
-            Choose wisely... (Hint: One button is a little shy!)
-          </p>
-
-          <div class="flex flex-wrap items-center justify-center gap-4 relative min-h-[60px]">
-            <button id="yes-btn" onclick="handleYesClick()"
-              class="px-8 py-3.5 rounded-full bg-gradient-to-r from-roseDeep to-pink-500 text-white font-semibold text-base shadow-lg shadow-rose-300/60 hover:scale-105 active:scale-95 transition cursor-pointer z-10">
-              Yes, Forever! ❤️
-            </button>
-
-            <button id="no-btn" onmouseover="dodgeNoButton()" ontouchstart="dodgeNoButton(event)" onclick="dodgeNoButton(event)"
-              class="px-6 py-3 rounded-full bg-white text-rose-700 border border-rose-200 font-medium text-sm shadow-sm transition-all duration-200 cursor-pointer">
-              No 🙈
-            </button>
-          </div>
-        </div>
-
-        <!-- Celebration State (Shown after clicking Yes) -->
-        <div id="yes-celebration-stage" class="hidden py-4 animate-fade-in">
-          <div class="text-5xl mb-3">🥰💖🎉</div>
-          <h3 class="font-script text-4xl sm:text-5xl text-roseDeep mb-3">Yay!! I Knew It!</h3>
-          <p id="display-yes-response" class="font-serif text-lg text-[#4a2535] max-w-md mx-auto mb-6">
-            You just made me the happiest person in the world! I love you endlessly! ❤️
-          </p>
-          <button onclick="triggerHeartExplosion()" class="px-5 py-2 rounded-full bg-rose-100 text-roseDeep text-xs font-semibold hover:bg-rose-200 transition">
-            <i class="fa-solid fa-heart mr-1"></i> Send More Love
-          </button>
-        </div>
-
-        <!-- Edit Question Button (Creator Only) -->
-        <div class="creator-only mt-6 pt-4 border-t border-rose-100">
-          <button onclick="openEditModal('question')" class="px-4 py-2 rounded-full bg-white text-roseDeep border border-rose-300 text-xs font-semibold shadow-sm hover:bg-rose-50 transition">
-            <i class="fa-solid fa-pen mr-1"></i> Edit Finale Question
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Subtle Romantic Footer -->
-    <footer class="text-center text-xs text-rose-800/60 pt-4">
-      <p>Made with all my heart ❤️ <span id="footer-sender">Just For You</span></p>
-    </footer>
   </main>
+
   <!-- =========================================================
        3. CREATOR FLOATING TOOLBAR (Hidden in View-Only Link)
        ========================================================= -->
@@ -434,260 +232,136 @@ Thank you for your smile, your warmth, and the way you make ordinary days feel m
       </div>
 
       <div class="flex items-center gap-2 flex-wrap">
-        <button onclick="openEditModal()" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-medium transition flex items-center gap-1.5">
+        <button onclick="openEditModal()" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-medium transition flex items-center gap-1.5 cursor-pointer">
           <i class="fa-solid fa-pen-to-square"></i> Edit Gift
         </button>
 
-        <button onclick="togglePreviewMode()" id="preview-btn" class="px-3 py-1.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-200 border border-amber-400/30 text-xs font-medium transition flex items-center gap-1.5">
-          <i class="fa-solid fa-eye"></i> Preview Recipient View
+        <button onclick="togglePreviewMode()" id="preview-btn" class="px-3 py-1.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-200 border border-amber-400/30 text-xs font-medium transition flex items-center gap-1.5 cursor-pointer">
+          <i class="fa-solid fa-eye"></i> Preview Friend View
         </button>
 
-        <button onclick="copyGiftLink()" class="px-4 py-1.5 rounded-xl bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white text-xs font-bold shadow-lg shadow-rose-500/30 transition flex items-center gap-1.5">
+        <button onclick="copyGiftLink()" class="px-4 py-1.5 rounded-xl bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white text-xs font-bold shadow-lg shadow-rose-500/30 transition flex items-center gap-1.5 cursor-pointer">
           <i class="fa-solid fa-link"></i> Copy Gift Link
         </button>
       </div>
     </div>
   </div>
 
-  <!-- Exit Preview Floating Pill (Only visible when Creator is testing Recipient View) -->
+  <!-- Exit Preview Floating Pill -->
   <div id="exit-preview-bar" class="hidden fixed bottom-4 right-4 z-50">
-    <button onclick="togglePreviewMode()" class="px-4 py-2.5 rounded-full bg-gray-900/90 text-white text-xs font-semibold shadow-xl border border-white/20 hover:bg-black transition flex items-center gap-2">
+    <button onclick="togglePreviewMode()" class="px-4 py-2.5 rounded-full bg-gray-900/90 text-white text-xs font-semibold shadow-xl border border-white/20 hover:bg-black transition flex items-center gap-2 cursor-pointer">
       <i class="fa-solid fa-pen"></i> Back to Creator Mode
     </button>
   </div>
+
   <!-- =========================================================
-       4. CREATOR EDIT MODAL (All Customization Controls)
+       4. CREATOR EDIT MODAL (Gallery Photo Picker + Music + Text)
        ========================================================= -->
   <div id="edit-modal" class="creator-only hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-hidden shadow-2xl flex flex-col border border-rose-100">
-      <!-- Modal Header -->
       <div class="px-6 py-4 bg-gradient-to-r from-rose-50 to-pink-50 border-b border-rose-100 flex items-center justify-between">
         <div>
-          <h3 class="font-serif text-xl font-bold text-gray-800">Customize Your Digital Gift ✨</h3>
-          <p class="text-xs text-gray-500">Saare changes auto-save hote hain aur link me encode ho jayenge</p>
+          <h3 class="font-serif-display text-2xl font-bold text-gray-800">Customize Your Digital Gift ✨</h3>
+          <p class="text-xs text-gray-500">Saare changes auto-save hote hain aur link me lock ho jayenge</p>
         </div>
-        <button onclick="closeEditModal()" class="w-8 h-8 rounded-full bg-white text-gray-500 hover:text-rose-600 flex items-center justify-center shadow-sm">
+        <button onclick="closeEditModal()" class="w-8 h-8 rounded-full bg-white text-gray-500 hover:text-rose-600 flex items-center justify-center shadow-sm cursor-pointer">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
 
-      <!-- Modal Body (Scrollable Form) -->
       <div class="p-6 overflow-y-auto space-y-6 text-sm">
-        <!-- Names & Title -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Recipient Name (Jiske liye gift hai)</label>
-            <input type="text" id="input-to" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 focus:border-rose-400 focus:outline-none" placeholder="e.g. My Love / Priya" />
+            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Friend / Recipient Name</label>
+            <input type="text" id="input-to" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 focus:border-rose-400 focus:outline-none" />
           </div>
           <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Your Name (Aapka naam)</label>
-            <input type="text" id="input-from" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 focus:border-rose-400 focus:outline-none" placeholder="e.g. Yours Forever / Rahul" />
+            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Your Name</label>
+            <input type="text" id="input-from" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 focus:border-rose-400 focus:outline-none" />
           </div>
         </div>
 
         <div>
           <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Hero Headline</label>
-          <input type="text" id="input-headline" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 focus:border-rose-400 focus:outline-none" placeholder="e.g. Every Love Story Is Beautiful, But Ours Is My Favorite" />
-        </div>
-
-        <!-- Love Letter -->
-        <div>
-          <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Secret Love Letter</label>
-          <textarea id="input-letter" rows="4" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 focus:border-rose-400 focus:outline-none" placeholder="Apne dil ki baat yahan likhein..."></textarea>
-        </div>
-        <!-- Background Music Selector -->
-        <div class="p-3.5 rounded-2xl bg-pink-50/70 border border-rose-200">
-          <label class="block text-xs font-bold uppercase tracking-wider text-rose-700 mb-1.5">
-            🎵 Background Music (MP3 सेलेक्ट करें या डिफ़ॉल्ट रहने दें)
-          </label>
-          <input type="file" id="input-music-file" accept="audio/*" class="w-full text-xs text-gray-600 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-rose-600 file:text-white hover:file:bg-rose-700 cursor-pointer" />
-          <p id="music-status" class="text-[11px] text-gray-500 mt-1">Default: Romantic Piano Melody 🎹</p>
-        </div>
-
-        <!-- Memories / Polaroids (Direct Photo Upload) -->
-        <div>
-          <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">
-            📸 3 Special Memories (गैलरी से फोटो चुनें + कैप्शन लिखें)
-          </label>
-          <div class="space-y-3">
-            <!-- Photo 1 -->
-            <div class="p-3 rounded-2xl bg-rose-50/50 border border-rose-100 space-y-2">
-              <div class="flex items-center justify-between gap-2">
-                <input type="file" id="input-mem1-file" accept="image/*" onchange="handlePhotoUpload(this, 1)" class="text-xs text-gray-600 file:mr-2 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-rose-500 file:text-white cursor-pointer" />
-                <img id="preview-mem1" src="" class="w-10 h-10 rounded-lg object-cover border border-rose-200" />
-              </div>
-              <input type="text" id="input-mem1-cap" class="w-full px-3 py-1.5 rounded-lg border border-gray-200 text-xs" placeholder="Caption 1 (e.g. Our First Date)" />
-            </div>
-
-            <!-- Photo 2 -->
-            <div class="p-3 rounded-2xl bg-rose-50/50 border border-rose-100 space-y-2">
-              <div class="flex items-center justify-between gap-2">
-                <input type="file" id="input-mem2-file" accept="image/*" onchange="handlePhotoUpload(this, 2)" class="text-xs text-gray-600 file:mr-2 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-rose-500 file:text-white cursor-pointer" />
-                <img id="preview-mem2" src="" class="w-10 h-10 rounded-lg object-cover border border-rose-200" />
-              </div>
-              <input type="text" id="input-mem2-cap" class="w-full px-3 py-1.5 rounded-lg border border-gray-200 text-xs" placeholder="Caption 2 (e.g. Late Night Talks)" />
-            </div>
-
-            <!-- Photo 3 -->
-            <div class="p-3 rounded-2xl bg-rose-50/50 border border-rose-100 space-y-2">
-              <div class="flex items-center justify-between gap-2">
-                <input type="file" id="input-mem3-file" accept="image/*" onchange="handlePhotoUpload(this, 3)" class="text-xs text-gray-600 file:mr-2 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-rose-500 file:text-white cursor-pointer" />
-                <img id="preview-mem3" src="" class="w-10 h-10 rounded-lg object-cover border border-rose-200" />
-              </div>
-              <input type="text" id="input-mem3-cap" class="w-full px-3 py-1.5 rounded-lg border border-gray-200 text-xs" placeholder="Caption 3 (e.g. Forever & Always)" />
-            </div>
-          </div>
-        </div>
-        
-
-        <!-- 3 Reasons Why I Love You (Flip Cards) -->
-        <div>
-          <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">3 Reasons I Adore You (Flip Cards)</label>
-          <div class="space-y-2">
-            <input type="text" id="input-reason1" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 text-xs" placeholder="Reason 1..." />
-            <input type="text" id="input-reason2" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 text-xs" placeholder="Reason 2..." />
-            <input type="text" id="input-reason3" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 text-xs" placeholder="Reason 3..." />
-          </div>
-        </div>
-
-        <!-- Finale Question -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Finale Cute Question</label>
-            <input type="text" id="input-question" class="w-full px-3.5 py-2 rounded-xl border border-gray-200" placeholder="e.g. Will you stay mine forever?" />
-          </div>
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Celebration Reply Message</label>
-            <input type="text" id="input-yes-msg" class="w-full px-3.5 py-2 rounded-xl border border-gray-200" placeholder="e.g. Yay! You made me the happiest person alive! ❤️" />
-          </div>
-        </div>
-      </div>
-
-      <!-- Modal Footer -->
-      <div class="px-6 py-4 bg-gray-50 border-t border-gray-100 flex items-center justify-between">
-        <button onclick="resetToDefault()" class="text-xs text-gray-400 hover:text-red-500 transition">
-          Reset Default
-        </button>
-        <div class="flex gap-2">
-          <button onclick="closeEditModal()" class="px-4 py-2 rounded-xl border border-gray-200 text-gray-600 text-xs font-semibold hover:bg-gray-100">
-  <!-- =========================================================
-       4. CREATOR EDIT MODAL (All Customization Controls with Direct Photo Upload)
-       ========================================================= -->
-  <div id="edit-modal" class="creator-only hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-hidden shadow-2xl flex flex-col border border-rose-100">
-      <!-- Modal Header -->
-      <div class="px-6 py-4 bg-gradient-to-r from-rose-50 to-pink-50 border-b border-rose-100 flex items-center justify-between">
-        <div>
-          <h3 class="font-serif text-xl font-bold text-gray-800">Customize Your Digital Gift ✨</h3>
-          <p class="text-xs text-gray-500">Saare changes auto-save hote hain aur link me encode ho jayenge</p>
-        </div>
-        <button onclick="closeEditModal()" class="w-8 h-8 rounded-full bg-white text-gray-500 hover:text-rose-600 flex items-center justify-center shadow-sm">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-      </div>
-
-      <!-- Modal Body (Scrollable Form) -->
-      <div class="p-6 overflow-y-auto space-y-6 text-sm">
-        <!-- Names & Title -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Recipient Name (Jiske liye gift hai)</label>
-            <input type="text" id="input-to" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 focus:border-rose-400 focus:outline-none" placeholder="e.g. My Love / Priya" />
-          </div>
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Your Name (Aapka naam)</label>
-            <input type="text" id="input-from" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 focus:border-rose-400 focus:outline-none" placeholder="e.g. Yours Forever / Rahul" />
-          </div>
+          <input type="text" id="input-headline" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 focus:border-rose-400 focus:outline-none" />
         </div>
 
         <div>
-          <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Hero Headline</label>
-          <input type="text" id="input-headline" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 focus:border-rose-400 focus:outline-none" placeholder="e.g. Every Love Story Is Beautiful, But Ours Is My Favorite" />
-        </div>
-
-        <!-- Love Letter -->
-        <div>
-          <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Secret Love Letter</label>
-          <textarea id="input-letter" rows="4" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 focus:border-rose-400 focus:outline-none" placeholder="Apne dil ki baat yahan likhein..."></textarea>
+          <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Personal Message / Letter</label>
+          <textarea id="input-letter" rows="4" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 focus:border-rose-400 focus:outline-none"></textarea>
         </div>
 
         <!-- Background Music Selector -->
         <div class="p-3.5 rounded-2xl bg-pink-50/70 border border-rose-200">
           <label class="block text-xs font-bold uppercase tracking-wider text-rose-700 mb-1.5">
-            🎵 Background Music (MP3 seलेक्ट करें या डिफ़ॉल्ट रहने दें)
+            🎵 Background Music (Select Audio or Keep Default)
           </label>
           <input type="file" id="input-music-file" accept="audio/*" class="w-full text-xs text-gray-600 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-rose-600 file:text-white hover:file:bg-rose-700 cursor-pointer" />
           <p id="music-status" class="text-[11px] text-gray-500 mt-1">Default: Romantic Piano Melody 🎹</p>
         </div>
 
-        <!-- Memories / Polaroids (Direct Photo Upload) -->
+        <!-- Direct Photo Upload from Gallery -->
         <div>
           <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">
-            📸 3 Special Memories (गैलरी से फोटो चुनें + कैप्शन लिखें)
+            📸 3 Special Memories (Select Photos from Gallery + Captions)
           </label>
           <div class="space-y-3">
-            <!-- Photo 1 -->
             <div class="p-3 rounded-2xl bg-rose-50/50 border border-rose-100 space-y-2">
               <div class="flex items-center justify-between gap-2">
                 <input type="file" id="input-mem1-file" accept="image/*" onchange="handlePhotoUpload(this, 1)" class="text-xs text-gray-600 file:mr-2 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-rose-500 file:text-white cursor-pointer" />
                 <img id="preview-mem1" src="" class="w-10 h-10 rounded-lg object-cover border border-rose-200" />
               </div>
-              <input type="text" id="input-mem1-cap" class="w-full px-3 py-1.5 rounded-lg border border-gray-200 text-xs" placeholder="Caption 1 (e.g. Our First Date)" />
+              <input type="text" id="input-mem1-cap" class="w-full px-3 py-1.5 rounded-lg border border-gray-200 text-xs" placeholder="Caption 1" />
             </div>
 
-            <!-- Photo 2 -->
             <div class="p-3 rounded-2xl bg-rose-50/50 border border-rose-100 space-y-2">
               <div class="flex items-center justify-between gap-2">
                 <input type="file" id="input-mem2-file" accept="image/*" onchange="handlePhotoUpload(this, 2)" class="text-xs text-gray-600 file:mr-2 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-rose-500 file:text-white cursor-pointer" />
                 <img id="preview-mem2" src="" class="w-10 h-10 rounded-lg object-cover border border-rose-200" />
               </div>
-              <input type="text" id="input-mem2-cap" class="w-full px-3 py-1.5 rounded-lg border border-gray-200 text-xs" placeholder="Caption 2 (e.g. Late Night Talks)" />
+              <input type="text" id="input-mem2-cap" class="w-full px-3 py-1.5 rounded-lg border border-gray-200 text-xs" placeholder="Caption 2" />
             </div>
 
-            <!-- Photo 3 -->
             <div class="p-3 rounded-2xl bg-rose-50/50 border border-rose-100 space-y-2">
               <div class="flex items-center justify-between gap-2">
                 <input type="file" id="input-mem3-file" accept="image/*" onchange="handlePhotoUpload(this, 3)" class="text-xs text-gray-600 file:mr-2 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-rose-500 file:text-white cursor-pointer" />
                 <img id="preview-mem3" src="" class="w-10 h-10 rounded-lg object-cover border border-rose-200" />
               </div>
-              <input type="text" id="input-mem3-cap" class="w-full px-3 py-1.5 rounded-lg border border-gray-200 text-xs" placeholder="Caption 3 (e.g. Forever & Always)" />
+              <input type="text" id="input-mem3-cap" class="w-full px-3 py-1.5 rounded-lg border border-gray-200 text-xs" placeholder="Caption 3" />
             </div>
           </div>
         </div>
 
-        <!-- 3 Reasons Why I Love You (Flip Cards) -->
         <div>
           <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">3 Reasons I Adore You (Flip Cards)</label>
           <div class="space-y-2">
-            <input type="text" id="input-reason1" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 text-xs" placeholder="Reason 1..." />
-            <input type="text" id="input-reason2" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 text-xs" placeholder="Reason 2..." />
-            <input type="text" id="input-reason3" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 text-xs" placeholder="Reason 3..." />
+            <input type="text" id="input-reason1" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 text-xs" />
+            <input type="text" id="input-reason2" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 text-xs" />
+            <input type="text" id="input-reason3" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 text-xs" />
           </div>
         </div>
 
-        <!-- Finale Question -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Finale Cute Question</label>
-            <input type="text" id="input-question" class="w-full px-3.5 py-2 rounded-xl border border-gray-200" placeholder="e.g. Will you stay mine forever?" />
+            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Finale Question</label>
+            <input type="text" id="input-question" class="w-full px-3.5 py-2 rounded-xl border border-gray-200" />
           </div>
           <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Celebration Reply Message</label>
-            <input type="text" id="input-yes-msg" class="w-full px-3.5 py-2 rounded-xl border border-gray-200" placeholder="e.g. Yay! You made me the happiest person alive! ❤️" />
+            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Reply on Yes</label>
+            <input type="text" id="input-yes-msg" class="w-full px-3.5 py-2 rounded-xl border border-gray-200" />
           </div>
         </div>
       </div>
 
-      <!-- Modal Footer -->
       <div class="px-6 py-4 bg-gray-50 border-t border-gray-100 flex items-center justify-between">
-        <button onclick="resetToDefault()" class="text-xs text-gray-400 hover:text-red-500 transition">
+        <button onclick="resetToDefault()" class="text-xs text-gray-400 hover:text-red-500 transition cursor-pointer">
           Reset Default
         </button>
         <div class="flex gap-2">
-          <button onclick="closeEditModal()" class="px-4 py-2 rounded-xl border border-gray-200 text-gray-600 text-xs font-semibold hover:bg-gray-100">
+          <button onclick="closeEditModal()" class="px-4 py-2 rounded-xl border border-gray-200 text-gray-600 text-xs font-semibold hover:bg-gray-100 cursor-pointer">
             Cancel
           </button>
-          <button onclick="saveChanges()" class="px-5 py-2 rounded-xl bg-rose-600 text-white text-xs font-bold hover:bg-rose-700 shadow-md">
+          <button onclick="saveChanges()" class="px-5 py-2 rounded-xl bg-rose-600 text-white text-xs font-bold hover:bg-rose-700 shadow-md cursor-pointer">
             Save & Apply Changes
           </button>
         </div>
@@ -695,11 +369,11 @@ Thank you for your smile, your warmth, and the way you make ordinary days feel m
     </div>
   </div>
 
-  <!-- Romantic Background Audio & Floating Toggle Button -->
+  <!-- Background Audio & Floating Toggle Button -->
   <audio id="bg-music" loop preload="auto">
     <source src="https://cdn.pixabay.com/download/audio/2022/02/07/audio_1822015284.mp3" type="audio/mpeg">
   </audio>
-  <button id="music-toggle-btn" onclick="toggleMusic()" class="fixed top-4 right-4 z-50 w-10 h-10 rounded-full bg-white/85 backdrop-blur-md text-rose-600 shadow-lg border border-rose-200 flex items-center justify-center hover:scale-105 transition" title="Play/Pause Music">
+  <button id="music-toggle-btn" onclick="toggleMusic()" class="fixed top-4 right-4 z-50 w-10 h-10 rounded-full bg-white/85 backdrop-blur-md text-rose-600 shadow-lg border border-rose-200 flex items-center justify-center hover:scale-105 transition cursor-pointer" title="Play/Pause Music">
     <i id="music-icon" class="fa-solid fa-music"></i>
   </button>
 
@@ -708,36 +382,33 @@ Thank you for your smile, your warmth, and the way you make ordinary days feel m
     <i class="fa-solid fa-circle-check text-emerald-400"></i>
     <span id="toast-msg">Link copied!</span>
   </div>
-            
 
   <!-- =========================================================
-       5. JAVASCRIPT LOGIC (State, View-Only Security, Animations)
+       5. COMPLETE JAVASCRIPT LOGIC
        ========================================================= -->
   <script>
-    // Default Romantic Template Data
     const DEFAULT_DATA = {
       to: "My Favorite Person",
       from: "Yours Always",
-      headline: "Every Love Story Is Beautiful, But Ours Is My Favorite",
-      letter: "From the very first moment we talked, something shifted in my world. You turned ordinary days into my favorite memories and gave my heart a home it never knew it needed.\n\nNo matter where life takes us, you will always be my safest place, my biggest smile, and my greatest adventure. I love you more than words could ever hold.",
+      headline: "Every Story Is Beautiful, But Ours Is My Favorite",
+      letter: "From the very first moment we talked, something shifted in my world. You turned ordinary days into my favorite memories and gave my heart a smile it never knew it needed.\n\nNo matter where life takes us, you will always be my safest place, my biggest cheerleader, and my favorite human being.",
       mem1Img: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=600&q=80",
       mem1Cap: "The day everything began ✨",
       mem2Img: "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=600&q=80",
       mem2Cap: "Endless laughs & late talks 🌙",
       mem3Img: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=600&q=80",
-      mem3Cap: "Forever isn't long enough ❤️",
+      mem3Cap: "Forever & always ❤️",
       reason1: "The way your eyes light up whenever you smile—it instantly fixes my worst days.",
-      reason2: "How safe, understood, and genuinely happy I feel every single time I'm with you.",
+      reason2: "How safe, understood, and genuinely happy I feel every single time I'm around you.",
       reason3: "Your kindness, your chaotic humor, and the effortless magic you bring into my life.",
-      question: "Will you be mine forever & always?",
-      yesMsg: "I knew it! You just made me the luckiest person in the universe! ❤️✨"
+      question: "Will you stay my favorite person forever?",
+      yesMsg: "I knew it! You just made me the happiest person in the universe! ❤️✨"
     };
 
     let giftData = { ...DEFAULT_DATA };
     let isViewOnly = false;
     let isPreviewing = false;
 
-    // 1. Check URL Parameters on Load (Strict View-Only Lock)
     function initApp() {
       const params = new URLSearchParams(window.location.search);
       const viewFlag = params.get("view");
@@ -745,7 +416,6 @@ Thank you for your smile, your warmth, and the way you make ordinary days feel m
 
       if (encodedData) {
         try {
-          // Decode Base64 UTF-8 payload safely
           const jsonStr = decodeURIComponent(escape(atob(encodedData)));
           const parsed = JSON.parse(jsonStr);
           giftData = { ...DEFAULT_DATA, ...parsed };
@@ -753,7 +423,6 @@ Thank you for your smile, your warmth, and the way you make ordinary days feel m
           console.error("Invalid gift link data:", e);
         }
       } else {
-        // Load Creator's local draft if not opening a shared link
         const saved = localStorage.getItem("ilobher_creator_draft");
         if (saved) {
           try {
@@ -762,7 +431,6 @@ Thank you for your smile, your warmth, and the way you make ordinary days feel m
         }
       }
 
-      // If ?view=1 is in URL, permanently lock out all Creator/Edit UI
       if (viewFlag === "1") {
         isViewOnly = true;
         document.body.classList.add("view-only-mode");
@@ -773,7 +441,6 @@ Thank you for your smile, your warmth, and the way you make ordinary days feel m
       createFloatingHearts();
     }
 
-    // 2. Render Data into DOM
     function renderGiftContent() {
       const setTxt = (id, val) => {
         const el = document.getElementById(id);
@@ -804,10 +471,14 @@ Thank you for your smile, your warmth, and the way you make ordinary days feel m
       setTxt("display-question", giftData.question);
     }
 
-    // 3. Open Wax Seal Envelope
     function openGiftEnvelope() {
       const intro = document.getElementById("envelope-intro");
       const main = document.getElementById("gift-main");
+      const audio = document.getElementById("bg-music");
+      if (audio) {
+        audio.play().catch(() => {});
+        document.getElementById("music-icon").className = "fa-solid fa-pause";
+      }
       if (intro) {
         intro.style.opacity = "0";
         intro.style.pointerEvents = "none";
@@ -815,13 +486,23 @@ Thank you for your smile, your warmth, and the way you make ordinary days feel m
       }
       if (main) {
         main.classList.remove("hidden");
-        setTimeout(() => {
-          main.style.opacity = "1";
-        }, 50);
-  <script>
-    // ... (baki ka upar wala code jaise initApp, renderGiftContent vagera yhi rahega) ...
+        setTimeout(() => { main.style.opacity = "1"; }, 50);
+      }
+    }
 
-    // 1. Photo Upload & Compress Handler
+    function toggleMusic() {
+      const audio = document.getElementById("bg-music");
+      const icon = document.getElementById("music-icon");
+      if (!audio) return;
+      if (audio.paused) {
+        audio.play();
+        icon.className = "fa-solid fa-pause";
+      } else {
+        audio.pause();
+        icon.className = "fa-solid fa-music";
+      }
+    }
+
     function handlePhotoUpload(input, index) {
       const file = input.files[0];
       if (!file) return;
@@ -830,14 +511,14 @@ Thank you for your smile, your warmth, and the way you make ordinary days feel m
         const img = new Image();
         img.onload = function () {
           const canvas = document.createElement("canvas");
-          const MAX_WIDTH = 360; 
+          const MAX_WIDTH = 340;
           const scale = MAX_WIDTH / img.width;
           canvas.width = MAX_WIDTH;
           canvas.height = img.height * scale;
           const ctx = canvas.getContext("2d");
           ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-          const compressedDataUrl = canvas.toDataURL("image/jpeg", 0.65);
+          const compressedDataUrl = canvas.toDataURL("image/jpeg", 0.6);
           giftData[`mem${index}Img`] = compressedDataUrl;
           document.getElementById(`preview-mem${index}`).src = compressedDataUrl;
           showToast(`Photo ${index} selected!`);
@@ -847,7 +528,6 @@ Thank you for your smile, your warmth, and the way you make ordinary days feel m
       reader.readAsDataURL(file);
     }
 
-    // MP3 Audio File Selector Listener
     document.addEventListener("change", function (e) {
       if (e.target && e.target.id === "input-music-file") {
         const file = e.target.files[0];
@@ -861,7 +541,6 @@ Thank you for your smile, your warmth, and the way you make ordinary days feel m
       }
     });
 
-    // openEditModal (Updated with photo previews)
     function openEditModal() {
       if (isViewOnly) return;
       document.getElementById("input-to").value = giftData.to;
@@ -883,7 +562,10 @@ Thank you for your smile, your warmth, and the way you make ordinary days feel m
       document.getElementById("edit-modal").classList.remove("hidden");
     }
 
-    // saveChanges (Updated)
+    function closeEditModal() {
+      document.getElementById("edit-modal").classList.add("hidden");
+    }
+
     function saveChanges() {
       if (isViewOnly) return;
       giftData = {
@@ -905,13 +587,109 @@ Thank you for your smile, your warmth, and the way you make ordinary days feel m
       localStorage.setItem("ilobher_creator_draft", JSON.stringify(giftData));
       renderGiftContent();
       closeEditModal();
-      showToast("Saved! अब 'Copy Gift Link' पर क्लिक करके लिंक कॉपी करें ✨");
+      showToast("Saved! Ab 'Copy Gift Link' par click karke link copy karein ✨");
     }
 
-    // ... (baki ke neeche ke functions jaise copyGiftLink, showToast vagera yhi rahenge) ...
+    function resetToDefault() {
+      if (isViewOnly) return;
+      giftData = { ...DEFAULT_DATA };
+      localStorage.removeItem("ilobher_creator_draft");
+      renderGiftContent();
+      closeEditModal();
+      showToast("Default template restored!");
+    }
+
+    function copyGiftLink() {
+      const jsonStr = JSON.stringify(giftData);
+      const encoded = btoa(unescape(encodeURIComponent(jsonStr)));
+      const baseUrl = window.location.origin + window.location.pathname;
+      const shareUrl = `${baseUrl}?view=1&data=${encodeURIComponent(encoded)}`;
+
+      navigator.clipboard.writeText(shareUrl).then(() => {
+        showToast("View-Only Gift Link Copied! Friend ko edit option nahi dikhega ❤️");
+      }).catch(() => {
+        prompt("Copy your View-Only Gift Link below:", shareUrl);
+      });
+    }
+
+    function togglePreviewMode() {
+      if (isViewOnly) return;
+      isPreviewing = !isPreviewing;
+      const toolbar = document.getElementById("creator-toolbar");
+      const exitBar = document.getElementById("exit-preview-bar");
+      const inlineEdits = document.querySelectorAll(".inline-edit-btn");
+
+      if (isPreviewing) {
+        toolbar.classList.add("hidden");
+        exitBar.classList.remove("hidden");
+        inlineEdits.forEach(b => b.classList.add("hidden"));
+        showToast("Friend Preview Mode ON");
+      } else {
+        toolbar.classList.remove("hidden");
+        exitBar.classList.add("hidden");
+        inlineEdits.forEach(b => b.classList.remove("hidden"));
+        showToast("Back to Creator Mode");
+      }
+    }
+
+    function dodgeNoButton(btn) {
+      const x = (Math.random() - 0.5) * 180;
+      const y = (Math.random() - 0.5) * 100;
+      btn.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    function celebrateYes() {
+      const responseEl = document.getElementById("yes-response");
+      if (responseEl) {
+        responseEl.textContent = giftData.yesMsg;
+        responseEl.classList.remove("hidden");
+      }
+      for (let i = 0; i < 25; i++) {
+        spawnHeart(true);
+      }
+    }
+
+    function createFloatingHearts() {
+      setInterval(() => spawnHeart(false), 900);
+    }
+
+    function spawnHeart(burst) {
+      const container = document.getElementById("hearts-container");
+      if (!container) return;
+      const heart = document.createElement("div");
+      const icons = ["❤️", "💖", "🌸", "✨", "💕"];
+      heart.textContent = icons[Math.floor(Math.random() * icons.length)];
+      heart.style.position = "fixed";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.bottom = "-30px";
+      heart.style.fontSize = (burst ? 22 : 14 + Math.random() * 14) + "px";
+      heart.style.opacity = "0.75";
+      heart.style.pointerEvents = "none";
+      heart.style.zIndex = "5";
+      heart.style.transition = `transform ${burst ? 3 : 6 + Math.random() * 4}s linear, opacity 4s ease-out`;
+
+      container.appendChild(heart);
+
+      requestAnimationFrame(() => {
+        heart.style.transform = `translateY(-110vh) rotate(${Math.random() * 360}deg)`;
+        heart.style.opacity = "0";
+      });
+
+      setTimeout(() => heart.remove(), 10000);
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById("toast");
+      const toastMsg = document.getElementById("toast-msg");
+      if (!toast || !toastMsg) return;
+      toastMsg.textContent = msg;
+      toast.style.opacity = "1";
+      setTimeout(() => {
+        toast.style.opacity = "0";
+      }, 3500);
+    }
+
+    window.addEventListener("DOMContentLoaded", initApp);
   </script>
-            
 </body>
 </html>
-
-  
